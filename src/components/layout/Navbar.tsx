@@ -5,6 +5,7 @@ import {  Bike, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import { Link } from "react-router-dom";
+import { ModeToggle } from "../ModeToggle";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -19,10 +20,10 @@ export default function Navbar() {
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto flex items-center justify-between p-4">
-        <Link to="/" className="flex items-center gap-2 text-xl font-bold">
+        <div className="flex items-center gap-2 text-xl font-bold">
           <Bike className="w-6 h-6 text-blue-600" />
-          <span>Store</span>
-        </Link>
+          <span className=" text-red-500">Store</span>
+        </div>
         
         <nav className="hidden md:flex gap-6">
           {navLinks.map((link) => (
@@ -33,7 +34,7 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <Button variant="ghost" size="icon">
+          <Button variant="default" size="icon">
             <ShoppingCart className="w-5 h-5" />
           </Button>
 
@@ -44,7 +45,9 @@ export default function Navbar() {
           >
             ☰
           </Button>
+          <ModeToggle/>
         </div>
+        
       </div>
 
       {isOpen && (

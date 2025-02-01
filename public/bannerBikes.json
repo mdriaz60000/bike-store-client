@@ -1,0 +1,22 @@
+[
+    {
+        "id" : 1 ,
+        "image" :"https://img.freepik.com/free-psd/stylish-blue-motorcycle-transparent-background_84443-27683.jpg?uid=R110004738&ga=GA1.1.1584261188.1697473840&semt=ais_hybrid"
+    },
+    {
+        "id" : 2 ,
+        "image" :"https://img.freepik.com/free-psd/sleek-yellow-electric-motorcycle-modern-design-powerful-engine_632498-48423.jpg?uid=R110004738&ga=GA1.1.1584261188.1697473840&semt=ais_hybrid"
+    },
+    {
+        "id" : 3 ,
+        "image" :"https://img.freepik.com/free-psd/orange-sports-bike-motorcycle-transparent-background_84443-1926.jpg?t=st=1738333674~exp=1738337274~hmac=7c4c4dad9f6aab60b23ee94bf90f7644703a41102a9b5fdcdc8934ea1352e2c9&w=740"
+    },
+    {
+        "id" : 4 ,
+        "image" :"https://img.freepik.com/free-psd/pink-motorcycle-stylish-cruiser-design-powerful-engine_632498-48373.jpg?uid=R110004738&ga=GA1.1.1584261188.1697473840&semt=ais_hybrid"
+    },
+    {
+        "id" : 5 ,
+        "image" :"https://img.freepik.com/free-psd/orange-chopper-motorcycle-chrome-details-powerful-engine_632498-52362.jpg?uid=R110004738&ga=GA1.1.1584261188.1697473840&semt=ais_hybrid"
+    }
+]
