@@ -19,7 +19,7 @@ export function Banner() {
   }, []);
 
   return (
-    <div className="w-full max-w-screen-xl mx-auto">
+    <div className=" w-full mx-auto max-w-screen-xl ">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -42,7 +42,7 @@ export function Banner() {
             <img
               src={item.image}
               alt={`Banner ${index + 1}`}
-              className="w-full    lg:h-[500px] bg-sky-600   "
+              className="w-full    lg:h-[500px]   "
             />
           </SwiperSlide>
         ))}

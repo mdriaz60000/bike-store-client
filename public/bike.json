@@ -1,0 +1,65 @@
+[
+    {
+         "id": "1",
+        "brand": "Trek",
+        "model": "Domane SL 5",
+        "price": 2499.99,
+        "category": "Road Bike",
+        "img": "https://img.freepik.com/free-psd/stylish-blue-motorcycle-transparent-background_84443-27683.jpg?uid=R110004738&ga=GA1.1.1584261188.1697473840&semt=ais_hybrid",
+        "details": "The Domane SL 5 is a lightweight carbon road bike with endurance geometry, disc brakes, and a comfortable ride."
+    },
+    {
+        "id": "2",
+        "brand": "Specialized",
+        "model": "Stumpjumper Comp",
+        "price": 3299.99,
+        "category": "Mountain Bike",
+        "img": "https://img.freepik.com/free-psd/stylish-blue-motorcycle-transparent-background_84443-27683.jpg?uid=R110004738&ga=GA1.1.1584261188.1697473840&semt=ais_hybrid",
+        "details": "The Stumpjumper Comp is a full-suspension mountain bike designed for trail riding, featuring 29-inch wheels and a durable frame."
+    },
+    {
+        "id": "3",
+        "brand": "Giant",
+        "model": "TCR Advanced Pro 1",
+        "price": 3999.99,
+        "category": "Road Bike",
+        "img": "https://img.freepik.com/free-psd/stylish-blue-motorcycle-transparent-background_84443-27683.jpg?uid=R110004738&ga=GA1.1.1584261188.1697473840&semt=ais_hybrid",
+        "details": "The TCR Advanced Pro 1 is a high-performance road bike with aerodynamic design, carbon frame, and Shimano Ultegra components."
+    },
+    {
+        "id": "4",
+        "brand": "Cannondale",
+        "model": "Trail 5",
+        "price": 899.99,
+        "category": "Mountain Bike",
+        "img": "https://img.freepik.com/free-psd/stylish-blue-motorcycle-transparent-background_84443-27683.jpg?uid=R110004738&ga=GA1.1.1584261188.1697473840&semt=ais_hybrid",
+        "details": "The Trail 5 is an entry-level hardtail mountain bike with a lightweight aluminum frame and 27.5-inch wheels latest variant"
+    },
+    {
+        "id": "5",
+        "brand": "Santa Cruz",
+        "model": "Hightower",
+        "price": 4999.99,
+        "category": "Mountain Bike",
+        "img": "https://img.freepik.com/free-psd/stylish-blue-motorcycle-transparent-background_84443-27683.jpg?uid=R110004738&ga=GA1.1.1584261188.1697473840&semt=ais_hybrid",
+        "details": "The Hightower is a versatile full-suspension mountain bike with 29-inch wheels, designed for aggressive trail riding."
+    },
+    {
+        "id": "6",
+        "brand": "Cervelo",
+        "model": "Caledonia-5",
+        "price": 5499.99,
+        "category": "Road Bike",
+        "img": "https://img.freepik.com/free-psd/stylish-blue-motorcycle-transparent-background_84443-27683.jpg?uid=R110004738&ga=GA1.1.1584261188.1697473840&semt=ais_hybrid",
+        "details": "The Caledonia-5 is a high-end road bike with a carbon frame, aerodynamic design, and Shimano Dura-Ace components."
+    },
+    {
+        "id": "7",
+        "brand": "Yeti",
+        "model": "SB130",
+        "price": 6299.99,
+        "category": "Mountain Bike",
+        "img": "https://img.freepik.com/free-psd/stylish-blue-motorcycle-transparent-background_84443-27683.jpg?uid=R110004738&ga=GA1.1.1584261188.1697473840&semt=ais_hybrid",
+        "details": "The SB130 is a premium full-suspension mountain bike with 29-inch wheels, designed for technical trails and all-mountain riding."
+    }
+]

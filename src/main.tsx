@@ -6,10 +6,13 @@ import Router from './routes/Router'
 import { ThemeProvider } from './components/ThemProvider/ThemProvider'
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+  <StrictMode >
+    
     <ThemeProvider>
     <RouterProvider router={Router} />
     </ThemeProvider>
+    
+   
     
     
   </StrictMode>,
