@@ -13,6 +13,7 @@ const LatestBike = ({ bikes }: { bikes: Bike[] }) => {
                 ))}
             </div>
             <div className=" flex justify-center items-center py-4">
+                
                 <Button> all bike</Button>
             </div>
         </div>

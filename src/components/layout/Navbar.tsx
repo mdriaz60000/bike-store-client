@@ -21,13 +21,13 @@ export default function Navbar() {
     <header className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto flex items-center justify-between p-4">
         <div className="flex items-center gap-2 text-xl font-bold">
-          <Bike className="w-6 h-6 text-blue-600" />
-          <span className=" text-red-500">Store</span>
+          <Bike className="w-6 h-6 text-primary" />
+          <span className=" text-primary">Store</span>
         </div>
         
         <nav className="hidden md:flex gap-6">
           {navLinks.map((link) => (
-            <Link key={link.name} to={link.href} className="text-gray-700 hover:text-blue-600">
+            <Link key={link.name} to={link.href} className="text-gray-700 hover:text-primary">
               {link.name}
             </Link>
           ))}

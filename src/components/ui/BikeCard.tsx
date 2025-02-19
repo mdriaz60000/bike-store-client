@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 import { Bike } from "../../types";
 import { Button } from "./button";
 import { Card, CardContent, CardFooter, CardHeader } from "./card";
@@ -29,10 +30,12 @@ const BikeCard = ({ bike }: { bike: Bike }) => {
 
             {/* Card Footer */}
             <CardFooter className="p-4 border-t">
-                <Button className="w-full">View Details</Button>
+                <Link to={`details/${bike.id}`}> <Button className="w-full">View Details</Button></Link>
+                
             </CardFooter>
         </Card>
     );
+   
 };
 
 export default BikeCard;

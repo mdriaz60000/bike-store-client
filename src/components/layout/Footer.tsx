@@ -64,7 +64,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Copyright Section */}
         <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} Bike Store. All rights reserved.</p>
         </div>
