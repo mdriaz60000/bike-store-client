@@ -30,7 +30,7 @@ const BikeCard = ({ bike }: { bike: Bike }) => {
 
             {/* Card Footer */}
             <CardFooter className="p-4 border-t">
-                <Link to={`details/${bike.id}`}> <Button className="w-full">View Details</Button></Link>
+                <Link to={`/details/${bike.id}`}> <Button className="w-full">View Details</Button></Link>
                 
             </CardFooter>
         </Card>

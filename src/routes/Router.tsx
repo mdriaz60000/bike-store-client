@@ -3,6 +3,8 @@ import MainLayout from "../components/layout/MainLayout";
 import ErrorPage from "../pages/ErrorPage";
 import App from "../App";
 import BikeDetails from "../pages/BikeDetails/BikeDetails";
+import RegisterForm from "../components/shared/Register/Register";
+import LoginForm from "../components/shared/Login/Login";
 
 
 
@@ -17,8 +19,17 @@ const Router = createBrowserRouter([
                 element : <App/>
             },
             {
-                path : "/details",
-                element : <BikeDetails/>
+                path : "/register",
+                element : <RegisterForm />
+            },
+            {
+                path : "/login",
+                element : <LoginForm />
+            },
+            {
+                path : "/details/:id",
+                element : <BikeDetails/>,
+                loader:()=>fetch('bike.json')
             }
         ]
     }

@@ -17,7 +17,7 @@ function App() {
   // if (isLoading) return <div>Loading...</div>;
   // if (error) return <div>Error: {error.message}</div>
 
- console.log(bikes)
+
   return (
     <>
     <div className=' w-[90%] mx-auto'>
