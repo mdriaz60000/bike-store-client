@@ -34,7 +34,7 @@ const LoginForm = () => {
       <div className="flex items-center space-x-4 text-primary  ">
         <Bike />
         <div>
-          <h1 className="text-xl font-semibold">Register</h1>
+          <h1 className="text-xl font-semibold">Login</h1>
           <p className="font-extralight text-sm text-gray-600">
             Join us today and start your journey!
           </p>
@@ -78,7 +78,7 @@ const LoginForm = () => {
       <p className="text-sm text-gray-600 text-center my-3">
         Create have an account?
         <Link to="/register" className="text-primary">
-          Login
+          Register
         </Link>
       </p>
     </div>

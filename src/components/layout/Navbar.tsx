@@ -1,11 +1,12 @@
-
 // import { cn } from "@/lib/utils";
-import {  Bike, ShoppingCart } from "lucide-react";
+import { Bike, ShoppingCart } from "lucide-react";
 
 import { useState } from "react";
 import { Button } from "../ui/button";
 import { Link } from "react-router-dom";
 import { ModeToggle } from "../ModeToggle";
+import DorpDownMenu from "../shared/DorpDownMenu/DorpDownMenu";
+
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -20,14 +21,18 @@ export default function Navbar() {
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto flex items-center justify-between p-4">
-        <div className="flex items-center gap-2 text-xl font-bold">
+        <div className="flex items-center gap-2 text-2xl font-bold">
           <Bike className="w-6 h-6 text-primary" />
           <span className=" text-primary">Store</span>
         </div>
-        
+
         <nav className="hidden md:flex gap-6">
           {navLinks.map((link) => (
-            <Link key={link.name} to={link.href} className="text-gray-700 hover:text-primary">
+            <Link
+              key={link.name}
+              to={link.href}
+              className="text-gray-700 hover:text-primary"
+            >
               {link.name}
             </Link>
           ))}
@@ -45,9 +50,10 @@ export default function Navbar() {
           >
             ☰
           </Button>
-          <ModeToggle/>
+          <ModeToggle />
+        <DorpDownMenu />
+          
         </div>
-        
       </div>
 
       {isOpen && (

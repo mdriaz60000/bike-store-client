@@ -2,12 +2,10 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const baseApi = createApi({
   reducerPath: 'baseApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'bike.json' }),
-  endpoints: (builder) => ({
-    getBike: builder.query({
-      query: () => '/bike', 
-    }),
-  }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/api',
+   credentials : "include"
+   }),
+  endpoints: () => ({}),
 });
 
-export const { useGetBikeQuery } = baseApi;
+export default baseApi;

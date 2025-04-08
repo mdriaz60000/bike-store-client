@@ -7,11 +7,16 @@ import { Input } from "../../ui/input";
 import { RegisterSchema } from "./registerValidationSchema";
 import { z } from "zod";
 import { Bike } from "lucide-react";
+import { useLoginMutation } from "../../../redux/features/auth/authApi";
+
+
 
 // Zod Schema for Validation
 
 
 const RegisterForm = () => {
+  const [login] = useLoginMutation()
+
   const form = useForm({
     resolver: zodResolver(RegisterSchema),
     defaultValues: {
@@ -27,28 +32,29 @@ const RegisterForm = () => {
   } = form;
 
   const onSubmit = async (data: z.infer<typeof RegisterSchema>) => {
-    console.log(data);
     
-    const userData = {
+    const userInfo = {
       name: data.name,
       email: data.email,
       password: data.password,
     };
+    console.log(userInfo)
+    login(userInfo)
   
-    try {
-      const response = await fetch("http://localhost:5000/api/user", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      });
+    // try {
+    //   const response = await fetch("http://localhost:5000/api/user", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(userData),
+    //   });
   
-      const json = await response.json();
-      console.log(json);
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    //   const json = await response.json();
+    //   console.log(json);
+    // } catch (error) {
+    //   console.error("Error:", error);
+    // }
   };
   
 
