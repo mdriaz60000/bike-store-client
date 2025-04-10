@@ -8,6 +8,7 @@ import LoginForm from "../components/shared/Login/Login";
 import Admin from "../pages/Dashboard/Admin/Admin";
 import CreateBike from "../pages/Dashboard/CreateBike";
 import AllUsers from "../pages/Dashboard/AllUsers";
+import ProtectedRoute from "../components/layout/ProtectRoutes";
 
 
 
@@ -31,12 +32,12 @@ const Router = createBrowserRouter([
             },
             {
                 path : "/details/:id",
-                element : <BikeDetails/>,
+                element : <ProtectedRoute> <BikeDetails/></ProtectedRoute> ,
                 loader:()=>fetch('bike.json')
             },
             {
                 path : "/dashboard",
-                element : <Admin />,
+                element : <ProtectedRoute> <Admin /> </ProtectedRoute> ,
                 children : [
                     {
                         path : "/dashboard/create-bike",

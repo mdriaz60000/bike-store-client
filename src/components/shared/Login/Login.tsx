@@ -1,7 +1,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../../ui/form";
 import { Input } from "../../ui/input";
@@ -9,15 +9,21 @@ import { Input } from "../../ui/input";
 import { z } from "zod";
 import { Bike } from "lucide-react";
 import { LoginSchema } from "./LoginValidationSchema";
+import { useLoginMutation } from "../../../redux/features/auth/authApi";
+import { useAppDispatch } from "../../../redux/hooks";
+import { setUser } from "../../../redux/features/auth/authSlice";
+
 
 
 const LoginForm = () => {
+
+  const navigate = useNavigate();
+  const [login, {data}] = useLoginMutation()
+  const dispatch = useAppDispatch();
+  console.log(data)
   const form = useForm({
     resolver: zodResolver(LoginSchema),
-    defaultValues: {
-      email: "",
-      password: ""
-    },
+   
   });
 
   const {
@@ -25,8 +31,13 @@ const LoginForm = () => {
   } = form;
 
   const onSubmit = async (data: z.infer<typeof LoginSchema>) => {
-    console.log("Form Data:", data);
-  };
+    // console.log("Form Data:", data);
+    const res = await login(data).unwrap()
+
+    dispatch(setUser({user: res.data.accessUser, token: res.data.accessToken}))
+    navigate("/dashboard")
+    
+  }; 
 
   return (
   <div className="   w-screen flex justify-center ">
