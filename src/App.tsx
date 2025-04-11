@@ -1,6 +1,7 @@
  import { useEffect, useState } from "react";
 import { Banner } from "./pages/bannar/Bannar"
 import LatestBike from "./pages/LatestBike/LatestBike"
+import Service from "./pages/service/Service";
 // import { useGetBikeQuery } from "./redux/api/baseApi";
 
 
@@ -23,6 +24,7 @@ function App() {
     <div className=' w-[90%] mx-auto'>
     <Banner/>
     <LatestBike bikes={bikes}  />
+    <Service/>
     </div>
     
      

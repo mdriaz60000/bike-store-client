@@ -18,7 +18,7 @@ const Admin = () => {
                 
                 <p><Link to="/dashboard/allUsers"> All user</Link></p>
                 <p> <Link to="/dashboard/create-bike"> Create bike</Link></p>
-                <p> <Link to="/dashboard/create-bike"> All Orders</Link></p>
+                <p> <Link to="/dashboard/allOrder"> All Orders</Link></p>
                 <p> <Link to="/dashboard/create-bike">User Message </Link></p>
                 
                

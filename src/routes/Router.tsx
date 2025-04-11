@@ -9,6 +9,7 @@ import Admin from "../pages/Dashboard/Admin/Admin";
 import CreateBike from "../pages/Dashboard/CreateBike";
 import AllUsers from "../pages/Dashboard/AllUsers";
 import ProtectedRoute from "../components/layout/ProtectRoutes";
+import Order from "../pages/Dashboard/AllOrder";
 
 
 
@@ -47,6 +48,10 @@ const Router = createBrowserRouter([
                         path : "/dashboard/allUsers",
                         element : <AllUsers />
                     },
+                    {
+                        path : "/dashboard/allOrder",
+                        element: <Order></Order>
+                    }
                 ]
             },
            
