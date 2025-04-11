@@ -35,7 +35,7 @@ const LoginForm = () => {
     const res = await login(data).unwrap()
 
     dispatch(setUser({user: res.data.accessUser, token: res.data.accessToken}))
-    navigate("/dashboard")
+    navigate("/")
     
   }; 
 
