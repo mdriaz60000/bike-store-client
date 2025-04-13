@@ -1,16 +1,20 @@
-import baseApi from "../../api/baseApi"
+import baseApi from "../../api/baseApi";
 
+const userApi = baseApi.injectEndpoints({
+  endpoints: (builder) => ({
+    getAllUser: builder.query({
+      query: () => ({
+        url: "/users",
+        method: "GET",
+      }),
+    }),
+    deleteUser: builder.mutation({
+      query: (id) => ({
+        url: `/user/${id}`,
+        method: "DELETE",
+      }),
+    }),
+  }),
+});
 
-const getAllUserApi = baseApi.injectEndpoints({
-    endpoints: (builder) => ({
-        getAllUser : builder.query({
-           query: () =>({
-             url :"/users",
-             method : "GET",
-           
-           })
-         }),
-       }),
-})
-
-export const {useGetAllUserQuery} = getAllUserApi
+export const { useGetAllUserQuery, useDeleteUserMutation } = userApi;

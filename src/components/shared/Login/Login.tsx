@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../../ui/form";
 import { Input } from "../../ui/input";
-
 import { z } from "zod";
 import { Bike } from "lucide-react";
 import { LoginSchema } from "./LoginValidationSchema";
@@ -36,7 +35,6 @@ const LoginForm = () => {
 
     dispatch(setUser({user: res.data.accessUser, token: res.data.accessToken}))
     navigate("/")
-    
   }; 
 
   return (
