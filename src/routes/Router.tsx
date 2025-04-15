@@ -11,6 +11,7 @@ import AllUsers from "../pages/Dashboard/AllUsers";
 import ProtectedRoute from "../components/layout/ProtectRoutes";
 import Order from "../pages/Dashboard/AllOrder";
 import AllBikes from "../pages/allBikes/AllBikes";
+import Contact from "../pages/Contact/Contact";
 
 
 
@@ -27,6 +28,10 @@ const Router = createBrowserRouter([
             {
                 path : "allBikes",
                 element : <AllBikes/>
+            },
+            {
+                path : "contact",
+                element : <Contact/>
             },
             {
                 path : "/register",
