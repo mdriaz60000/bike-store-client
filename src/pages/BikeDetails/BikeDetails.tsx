@@ -1,24 +1,25 @@
 import { useEffect, useState } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import BikeDetailsCard from "./BikeDetailsCard";
 import { Bike } from "../../types";
-
+import { useGetProductQuery } from "../../redux/features/AdminApi/ProductApi";
 
 const BikeDetails = () => {
     const { id } = useParams<{ id: string }>();
-    const allBikes = useLoaderData() as Bike[]; // Assuming useLoaderData returns an array of Bike objects
+    console.log(id);
+    const { data, error, isLoading } = useGetProductQuery(undefined);
     const [bike, setBike] = useState<Bike | null>(null);
 
     useEffect(() => {
-        if (allBikes && id) {
-            const foundBike = allBikes.find(item => item.id === id);
+        if (data && id) {
+            const foundBike = data.data.find((bike: Bike) => bike._id === id);
             setBike(foundBike || null);
         }
-    }, [allBikes, id]);
+    }, [data, id]);
 
-    if (!bike) {
-        return <div>Bike not found</div>;
-    }
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>Error loading bike details</div>;
+    if (!bike) return <div>Bike not found</div>;
 
     return (
         <div>

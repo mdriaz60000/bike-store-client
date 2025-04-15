@@ -6,5 +6,6 @@ export type Bike = {
         "category": string,
         "details" : string,
         "img" : string,
-        "id": number
+        "id": number,
+        "_id": string
 }

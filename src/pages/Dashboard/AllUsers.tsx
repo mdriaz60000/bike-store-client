@@ -9,6 +9,7 @@ import { tUser } from "../../type/user";
 
 const AllUsers = () => {
   const { data, isLoading, error } = useGetAllUserQuery(undefined);
+  console.log(data)
   const [deleteUser] = useDeleteUserMutation();
 
   if (isLoading) return <div>Loading...</div>;

@@ -10,6 +10,7 @@ import CreateBike from "../pages/Dashboard/CreateBike";
 import AllUsers from "../pages/Dashboard/AllUsers";
 import ProtectedRoute from "../components/layout/ProtectRoutes";
 import Order from "../pages/Dashboard/AllOrder";
+import AllBikes from "../pages/allBikes/AllBikes";
 
 
 
@@ -24,6 +25,10 @@ const Router = createBrowserRouter([
                 element : <App/>
             },
             {
+                path : "allBikes",
+                element : <AllBikes/>
+            },
+            {
                 path : "/register",
                 element : <RegisterForm />
             },
@@ -34,7 +39,7 @@ const Router = createBrowserRouter([
             {
                 path : "/details/:id",
                 element : <ProtectedRoute> <BikeDetails/></ProtectedRoute> ,
-                loader:()=>fetch('bike.json')
+                
             },
             {
                 path : "/dashboard",

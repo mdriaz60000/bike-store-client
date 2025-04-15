@@ -1,13 +1,12 @@
-
 import { Link } from "react-router-dom";
+import { Card, CardContent, CardFooter, CardHeader } from "../../components/ui/card";
 import { Bike } from "../../types";
-import { Button } from "./button";
-import { Card, CardContent, CardFooter, CardHeader } from "./card";
+import { Button } from "../../components/ui/button";
 
 
-const BikeCard = ({ bike }: { bike: Bike }) => {
+const AllBikesCard = ({ bike }: { bike: Bike }) => {
     return (
-        <Card className="w-full max-w-sm mx-auto overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+<Card className="w-full max-w-sm mx-auto overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
             
             <CardHeader className="p-0">
                 <img
@@ -35,7 +34,6 @@ const BikeCard = ({ bike }: { bike: Bike }) => {
             </CardFooter>
         </Card>
     );
-   
 };
 
-export default BikeCard;
+export default AllBikesCard;

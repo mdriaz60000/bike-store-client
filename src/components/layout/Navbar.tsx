@@ -10,7 +10,7 @@ import DorpDownMenu from "../shared/DorpDownMenu/DorpDownMenu";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Shop", href: "/shop" },
+  { name: "All-Bike", href: "/allBikes" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
