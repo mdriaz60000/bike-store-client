@@ -4,8 +4,6 @@ import { Bike } from "../../types";
 import { Button } from "./button";
 import { Card, CardContent, CardFooter, CardHeader } from "./card";
 
-
-
 const BikeCard = ({ bike }: { bike: Bike }) => {
     return (
         <Card className="w-full max-w-sm mx-auto overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100">

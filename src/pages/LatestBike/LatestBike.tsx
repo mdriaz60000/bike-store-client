@@ -12,11 +12,19 @@ const LatestBike = () => {
       if (error) return <div>Error is product</div>;
     return (
         <div className=" my-4 md:my-8 lg:my-16">
-            <p className="text-center text-4xl">Our Latest Bike</p>
-            <p className="text-center mb-2  md:mb-4 lg:mb-8">Bike quality full and Smart Collection</p>
+
+
+            <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Latest Bike</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          Bike quality full and Smart Collection
+          </p>
+        </div>
+        
+
             <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                 {data?.data?.slice(0,6).map((bike : Bike)  => (
-                    <BikeCard key={(bike.id)} bike={bike} />
+                    <BikeCard key={(bike._id)} bike={bike} />
                 ))}
             </div>
             <div className=" flex justify-center items-center py-4">
