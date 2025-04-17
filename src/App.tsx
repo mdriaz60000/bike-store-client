@@ -1,6 +1,7 @@
 
 import { Banner } from "./pages/bannar/Bannar";
 import LatestBike from "./pages/LatestBike/LatestBike";
+import Reviews from "./pages/Reveiw/Reveiw";
 import Service from "./pages/service/Service";
 
 
@@ -17,8 +18,8 @@ function App() {
         }
          */}
          <LatestBike  ></LatestBike>
-
         <Service/>
+        <Reviews/>
       </div>
     </>
   );

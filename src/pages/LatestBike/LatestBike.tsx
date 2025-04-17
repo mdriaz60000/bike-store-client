@@ -7,9 +7,7 @@ import { Bike } from "../../types";
 
 const LatestBike = () => {
     const { data , error, isLoading } = useGetProductQuery(undefined);
-      
-      
-      
+
       if (isLoading) return <div>Loading...</div>;
       if (error) return <div>Error is product</div>;
     return (

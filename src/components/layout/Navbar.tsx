@@ -1,11 +1,13 @@
 // import { cn } from "@/lib/utils";
-import { Bike, ShoppingCart } from "lucide-react";
+import { Bike } from "lucide-react";
 
 import { useState } from "react";
 import { Button } from "../ui/button";
 import { Link } from "react-router-dom";
 import { ModeToggle } from "../ModeToggle";
 import DorpDownMenu from "../shared/DorpDownMenu/DorpDownMenu";
+import { OrderCart } from "../shared/Dialog/Dalog";
+
 
 
 const navLinks = [
@@ -40,8 +42,11 @@ export default function Navbar() {
 
         <div className="flex items-center gap-4">
           <Button variant="default" size="icon">
-            <ShoppingCart className="w-5 h-5" />
-          </Button>
+          <OrderCart></OrderCart>
+            
+            </Button>
+           
+          
 
           <Button
             className="md:hidden"
@@ -50,7 +55,9 @@ export default function Navbar() {
           >
             ☰
           </Button>
+          
           <ModeToggle />
+ 
         <DorpDownMenu />
           
         </div>

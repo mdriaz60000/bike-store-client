@@ -22,12 +22,12 @@ const BikeDetails = () => {
     if (!bike) return <div>Bike not found</div>;
 
     return (
-        <div>
-            <p>Details page for bike</p>
-            <div>
+       
+            <div >
+                <br />
                 <BikeDetailsCard bike={bike} />
             </div>
-        </div>
+        
     );
 };
 
