@@ -45,8 +45,6 @@ export default function Navbar() {
           <OrderCart></OrderCart>
             
             </Button>
-           
-          
 
           <Button
             className="md:hidden"

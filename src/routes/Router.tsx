@@ -12,6 +12,7 @@ import ProtectedRoute from "../components/layout/ProtectRoutes";
 import Order from "../pages/Dashboard/AllOrder";
 import AllBikes from "../pages/allBikes/AllBikes";
 import Contact from "../pages/Contact/Contact";
+import AboutUs from "../pages/About/About";
 
 
 
@@ -32,6 +33,10 @@ const Router = createBrowserRouter([
             {
                 path : "contact",
                 element : <Contact/>
+            },
+            {
+                path : "about",
+                element : <AboutUs/>
             },
             {
                 path : "/register",
