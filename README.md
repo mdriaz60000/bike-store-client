@@ -6,11 +6,11 @@ A modern and responsive e-commerce platform built for selling bikes online. It o
 
 ## 🚀 Live Demo
 
-🌐 [Visit Live Site](https://your-bikestore-live-url.com)
+🌐 [Visit Live Site](https://bike-store-client-nine.vercel.app/)
 
 ---
 
-🔐 Admin Access 
+## 🔐 Admin Access 
 
 - Email: riaz@gmail.com
 - Password: 202020
@@ -19,7 +19,7 @@ A modern and responsive e-commerce platform built for selling bikes online. It o
 
 | Home Page | Product Page | Admin Dashboard |
 |-----------|--------------|-----------------|
-| ![Home](./screenshots/home.png) | ![Product](./screenshots/product.png) | ![Admin](./screenshots/admin.png) |
+| ![Home](https://i.ibb.co/HLQmcdcb/bikeHome.png) | ![Product](https://i.ibb.co/YFdT4RLC/Screenshot-2.png) | ![Admin](https://i.ibb.co/CsSFbXVP/admindashboard.png) |
 
 ---
 
