@@ -3,22 +3,25 @@ import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../../ui/dropdown-menu";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { Logout, useCurrentUser } from "../../../redux/features/auth/authSlice";
-import { Button } from "../../ui/button";
 
 
+interface TUser {
+  role?: string;
+  name?: string;
+ 
+}
 
 const DorpDownMenu = () => {
 
-  const user = useAppSelector(useCurrentUser)
+  const user : TUser | null = useAppSelector(useCurrentUser)
   const dispatch = useAppDispatch()
   const handleLogout = () => {
     dispatch(Logout())
 
   }
- 
     return (
   <>
-  
+
         <DropdownMenu>
         <DropdownMenuTrigger>
           <Avatar>
@@ -39,7 +42,16 @@ const DorpDownMenu = () => {
               <div className=" hidden"></div>
             )
           }
-          <Button onClick={handleLogout} > <DropdownMenuItem>Logout</DropdownMenuItem></Button>
+          {
+            user?.role === "user" ?(
+            <DropdownMenuItem>
+            {user?.name}
+          </DropdownMenuItem>
+            ) : (
+              <div className=" hidden"></div>
+            )
+          }
+             <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
          
         </DropdownMenuContent>
       </DropdownMenu>

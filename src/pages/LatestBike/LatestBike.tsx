@@ -5,10 +5,11 @@ import { useGetProductQuery } from "../../redux/features/AdminApi/ProductApi";
 import { Bike } from "../../types";
 
 
+
 const LatestBike = () => {
     const { data , error, isLoading } = useGetProductQuery(undefined);
 
-      if (isLoading) return <div>Loading...</div>;
+      if (isLoading) return <div >Priduct is Loadin</div>
       if (error) return <div>Error is product</div>;
     return (
         <div className=" my-4 md:my-8 lg:my-16">

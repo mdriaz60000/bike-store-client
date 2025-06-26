@@ -1,55 +1,47 @@
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "../../components/ui/table";
-import { useDeleteUserMutation, useGetAllUserQuery } from "../../redux/features/AdminApi/userApi";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "../../components/ui/table";
 import { RxUpdate } from "react-icons/rx";
 import { MdDeleteForever } from "react-icons/md";
-import Swal from 'sweetalert2'
-import { tUser } from "../../type/user";
+import { useDeleteOrderMutation, useGetOrderQuery } from "../../redux/features/AdminApi/orderApi";
+import { toast } from "sonner";
 
+interface tOrder {
+  productName: string;
+  orderEmail: string;
+  price: string;
+  _id: string;
+}
 
 const Order = () => {
-  const { data, isLoading, error } = useGetAllUserQuery(undefined);
-  const [deleteUser] = useDeleteUserMutation();
+  const { data, isLoading, error } = useGetOrderQuery(undefined) as { data?: tOrder[] };
+  const [deleteOrder] = useDeleteOrderMutation();
 
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading users</div>;
+  if (error) return <div>Error loading orders</div>;
 
-  const handleDelete = (userId: string) => {
-    console.log(userId)
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
-    }).then(async (result) => { 
-      if (result.isConfirmed) {
-        try {
-          const res = await deleteUser(userId).unwrap();
-          if (res?.success) {  
-            Swal.fire({
-              title: "Deleted!",
-              text: "User has been deleted successfully.",
-              icon: "success"
-            });
-          }
-        } catch (error) {
-          console.log(error)
-          Swal.fire({
-            title: "Error!",
-            text: "Failed to delete user.",
-            icon: "error"
-          });
-        }
+  const handleDelete = async (id: string) => {
+    try {
+      const res = await deleteOrder(id).unwrap();
+      if (res.success) {
+        toast.success("Delete successful");
       }
-    });
-  }
+    } catch (err) {
+      toast.error("Failed to delete order");
+    }
+  };
 
-    return (
-      <div className="overflow-x-auto">
+  return (
+    <div className="overflow-x-auto">
       <Table>
-        <TableCaption>A list of all users</TableCaption>
+        <TableCaption>A list of all orders</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">Order Name</TableHead>
@@ -60,22 +52,21 @@ const Order = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data?.data?.map((user: tUser) => (
-            <TableRow key={user._id}>
-              <TableCell className="font-medium">{user.name}</TableCell>
-              <TableCell>{user.role}</TableCell>
-              <TableCell>{user.email}</TableCell>
-
+          {data?.map((order: tOrder) => (
+            <TableRow key={order._id}>
+              <TableCell className="font-medium">{order.productName}</TableCell>
+              <TableCell>{order.price}</TableCell>
+              <TableCell>{order.orderEmail}</TableCell>
               <TableCell>
                 <button className="text-blue-500 hover:text-blue-700">
                   <RxUpdate />
                 </button>
               </TableCell>
               <TableCell>
-                <button 
-                  onClick={() => handleDelete(user._id)}
+                <button
+                  onClick={() => handleDelete(order._id)}
                   className="text-red-500 hover:text-red-700"
-                  aria-label="Delete user"
+                  aria-label="Delete order"
                 >
                   <MdDeleteForever size={20} />
                 </button>
@@ -85,7 +76,7 @@ const Order = () => {
         </TableBody>
       </Table>
     </div>
-    );
+  );
 };
 
 export default Order;

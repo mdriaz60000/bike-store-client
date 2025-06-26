@@ -9,7 +9,7 @@ import { tUser } from "../../type/user";
 
 const AllUsers = () => {
   const { data, isLoading, error } = useGetAllUserQuery(undefined);
-  console.log(data)
+  
   const [deleteUser] = useDeleteUserMutation();
 
   if (isLoading) return <div>Loading...</div>;
@@ -17,7 +17,7 @@ const AllUsers = () => {
 
   const filteredUsers = data?.data?.filter((user: tUser) => user.role === "user") || [];
 
-  const handleDelete = (userId: string) => {
+  const handleSoftDelete = (userId: string) => {
     console.log(userId)
     Swal.fire({
       title: "Are you sure?",
@@ -76,7 +76,7 @@ const AllUsers = () => {
               </TableCell>
               <TableCell>
                 <button 
-                  onClick={() => handleDelete(user._id)}
+                  onClick={() => handleSoftDelete(user._id)}
                   className="text-red-500 hover:text-red-700"
                   aria-label="Delete user"
                 >

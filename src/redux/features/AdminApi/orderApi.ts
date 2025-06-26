@@ -15,7 +15,15 @@ const orderApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+
+    deleteOrder: builder.mutation({
+      query: (id) => ({
+        url: `/deleteOrder/${id}`,
+        method: "PATCH",
+      }),
+    }),
+
   }),
 });
 
-export const { useAddOderMutation, useGetOrderQuery } = orderApi;
+export const { useAddOderMutation, useGetOrderQuery, useDeleteOrderMutation } = orderApi;

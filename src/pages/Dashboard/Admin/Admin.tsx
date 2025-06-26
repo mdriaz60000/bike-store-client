@@ -77,7 +77,7 @@ const Admin = () => {
           </Link>
         </div>
         <div className="p-4 border-t">
-          <Button variant="ghost" className="w-full justify-start gap-2">
+          <Button  className="w-full justify-start gap-2">
             <LogOut className="h-4 w-4" />
             Logout
           </Button>
@@ -135,7 +135,7 @@ const Admin = () => {
               </Link>
             </div>
             <div className="p-2 border-t">
-              <Button variant="ghost" className="w-full justify-start gap-2">
+              <Button  className="w-full justify-start gap-2">
                 <LogOut className="h-4 w-4" />
                 Logout
               </Button>
@@ -165,6 +165,7 @@ const Admin = () => {
             </Avatar>
           </div>
         </div>
+        
         <main className="flex-1 p-4 lg:p-6">
           <Outlet />
         </main>

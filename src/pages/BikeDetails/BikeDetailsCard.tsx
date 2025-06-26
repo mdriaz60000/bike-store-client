@@ -1,24 +1,26 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Card, CardContent, CardFooter, CardHeader } from "../../components/ui/card";
 import { Button } from "../../components/ui/button";
 import { Bike } from "../../types";
 import { useAppSelector } from "../../redux/hooks";
 import { useCurrentUser } from "../../redux/features/auth/authSlice";
-
 import Swal from "sweetalert2";
 import { useAddOderMutation } from "../../redux/features/AdminApi/orderApi";
 
 
 interface User {
   email: string;
+  name?: string
 }
 
 const BikeDetailsCard = ({ bike }: { bike: Bike }) => {
   const user = useAppSelector(useCurrentUser) as User | undefined;
   const [addOrder] = useAddOderMutation();
-
+ 
   const handleAddProduct = async () => {
 
     const orderData = {
+      userName: user?.name,
       price: bike.price,
       brand: bike.brand,
       category: bike.category,
@@ -29,14 +31,13 @@ const BikeDetailsCard = ({ bike }: { bike: Bike }) => {
 
     try {
       await addOrder(orderData).unwrap();
-
       Swal.fire({
         title: "Success!",
         text: "Order placed successfully.",
         icon: "success",
         confirmButtonText: "OK",
       });
-    } catch (error :any ) {
+    } catch (error  ) {
       Swal.fire({
         title: "Error!",
         text: "Failed to place the order.",

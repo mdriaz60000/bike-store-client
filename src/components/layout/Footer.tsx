@@ -38,7 +38,7 @@ export function Footer() {
             </p>
             <div className="flex flex-col sm:flex-row gap-2">
               <Input type="email" placeholder="Enter your email" className="flex-1" />
-              <Button variant="primary" className="w-full sm:w-auto">
+              <Button  className="w-full sm:w-auto">
                 Subscribe
               </Button>
             </div>

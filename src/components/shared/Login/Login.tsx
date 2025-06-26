@@ -17,9 +17,9 @@ import { setUser } from "../../../redux/features/auth/authSlice";
 const LoginForm = () => {
 
   const navigate = useNavigate();
-  const [login, {data}] = useLoginMutation()
+  const [login] = useLoginMutation()
   const dispatch = useAppDispatch();
-  console.log(data)
+ 
   const form = useForm({
     resolver: zodResolver(LoginSchema),
    
@@ -30,11 +30,15 @@ const LoginForm = () => {
   } = form;
 
   const onSubmit = async (data: z.infer<typeof LoginSchema>) => {
-    // console.log("Form Data:", data);
+    console.log("Form Data:", data);
     const res = await login(data).unwrap()
-
-    dispatch(setUser({user: res.data.accessUser, token: res.data.accessToken}))
+    
+    if(res.success){
+ dispatch(setUser({user: res.data.accessUser, token: res.data.accessToken}))
     navigate("/")
+    }
+
+   
   }; 
 
   return (
