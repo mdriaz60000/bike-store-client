@@ -1,3 +1,4 @@
+import Container from "../../components/shared/Containeer/Containeer";
 import { Card, CardContent } from "../../components/ui/card";
 import { CheckCircle } from "lucide-react"; 
 
@@ -36,7 +37,9 @@ const Service = () => {
     ];
 
     return (
-        <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-50">
+
+        <Container>      
+             <section className="py-12  ">
             <div className="max-w-7xl mx-auto text-center">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Our Services</h2>
                 <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8 md:mb-12">
@@ -57,7 +60,7 @@ const Service = () => {
                                 <ul className="space-y-2 text-left">
                                     {service.features.map((feature, i) => (
                                         <li key={i} className="flex items-start">
-                                            <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+                                            <CheckCircle className="h-5 w-5 text-primary mt-0.5 mr-2 flex-shrink-0" />
                                             <span className="text-gray-700">{feature}</span>
                                         </li>
                                     ))}
@@ -67,7 +70,8 @@ const Service = () => {
                     ))}
                 </div>
             </div>
-        </section>
+        </section></Container>
+ 
     );
 };
 

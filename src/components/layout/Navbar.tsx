@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { ModeToggle } from "../ModeToggle";
 import DorpDownMenu from "../shared/DorpDownMenu/DorpDownMenu";
 import { OrderCart } from "../shared/Dialog/Dalog";
+import Container from "../shared/Containeer/Containeer";
 
 
 
@@ -15,17 +16,21 @@ const navLinks = [
   { name: "All-Bike", href: "/allBikes" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
+  { name: "Blog", href: "/blog" },
+  { name: "Offer", href: "/offer" },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
-      <div className="container mx-auto flex items-center justify-between p-4">
+    
+         <header className="bg-white shadow-md sticky top-0 z-50">
+          <Container>
+      <div className=" flex items-center justify-between py-4">
         <div className="flex items-center gap-2 text-2xl font-bold">
           <Bike className="w-6 h-6 text-primary" />
-          <span className=" text-primary">Store</span>
+          <span className=" text-primary">Bike Store</span>
         </div>
 
         <nav className="hidden md:flex gap-6">
@@ -75,6 +80,10 @@ export default function Navbar() {
           ))}
         </nav>
       )}
+
+       </Container>
     </header>
+   
+ 
   );
 }

@@ -2,13 +2,14 @@ import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+import Container from "../shared/Containeer/Containeer";
 
 
 
 export function Footer() {
   return (
-    <footer className="bg-background border-t border-border py-12 mt-16">
-      <div className="container mx-auto px-4">
+    <footer className="bg-white border-t border-border py-12 mt-16">
+      <Container>
         {/* Grid for Footer Sections */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {/* About Section */}
@@ -25,8 +26,8 @@ export function Footer() {
             <ul className="space-y-2">
               <li><Link to="/" className="text-muted-foreground hover:text-primary">Home</Link></li>
               <li><Link to="/" className="text-muted-foreground hover:text-primary">Shop</Link></li>
-              <li><Link to="/" className="text-muted-foreground hover:text-primary">Blog</Link></li>
-              <li><Link to="/" className="text-muted-foreground hover:text-primary">Contact</Link></li>
+              <li><Link to="/blog" className="text-muted-foreground hover:text-primary">Blog</Link></li>
+              <li><Link to="/contact" className="text-muted-foreground hover:text-primary">Contact</Link></li>
             </ul>
           </div>
 
@@ -67,7 +68,7 @@ export function Footer() {
         <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} Bike Store. All rights reserved.</p>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

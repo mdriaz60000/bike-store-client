@@ -8,12 +8,12 @@ import { tUser } from "../../type/user";
 
 
 const AllUsers = () => {
-  const { data, isLoading, error } = useGetAllUserQuery(undefined);
+  const { data, isLoading, } = useGetAllUserQuery(undefined);
   
   const [deleteUser] = useDeleteUserMutation();
 
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading users</div>;
+  
 
   const filteredUsers = data?.data?.filter((user: tUser) => user.role === "user") || [];
 

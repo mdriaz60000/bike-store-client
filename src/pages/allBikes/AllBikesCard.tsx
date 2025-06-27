@@ -39,7 +39,7 @@ const AllBikesCard = ({ bike }: { bike: Bike }) => {
 
             <CardFooter className="p-4 bg-gray-50">
                 <Link to={`/details/${bike._id}`} className="w-full">
-                    <Button className="w-full bg-primary hover:bg-primary-dark transition-colors duration-300">
+                    <Button className="w-full ">
                         View Details
                     </Button>
                 </Link>
