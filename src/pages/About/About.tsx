@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Card } from "../../components/ui/card";
 import { Bike, Users, Shield, Globe } from "lucide-react"; 
+import Container from "../../components/shared/Containeer/Containeer";
 const AboutUs = () => {
   const stats = [
     { value: "10,000+", label: "Bikes Sold", icon: <Bike className="h-8 w-8" /> },
@@ -31,10 +32,10 @@ const AboutUs = () => {
   ];
 
   return (
-    <div className="bg-gray-50">
+    <Container>
       {/* Hero Section */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-primary to-primary-dark text-white">
-        <div className="max-w-7xl mx-auto text-center">
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-primary text-white">
+        <div className=" text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Story</h1>
           <p className="text-xl max-w-3xl mx-auto">
             From a small garage workshop to becoming your trusted bike specialists
@@ -43,7 +44,7 @@ const AboutUs = () => {
       </section>
 
       {/* Mission Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="py-16 ">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Why We Started</h2>
@@ -68,7 +69,7 @@ const AboutUs = () => {
 
       {/* Stats Section */}
       <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="px-4">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">By The Numbers</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((stat, index) => (
@@ -85,7 +86,7 @@ const AboutUs = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="py-16 ">
         <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Meet The Team</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {team.map((member, index) => (
@@ -106,7 +107,7 @@ const AboutUs = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-primary text-white">
+      <section className="py-16 px-4  bg-primary text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Ready to Find Your Perfect Bike?</h2>
           <p className="text-xl mb-8">
@@ -117,7 +118,7 @@ const AboutUs = () => {
           </button></Link>
         </div>
       </section>
-    </div>
+    </Container>
   );
 };
 

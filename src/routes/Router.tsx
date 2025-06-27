@@ -13,6 +13,8 @@ import Order from "../pages/Dashboard/AllOrder";
 import AllBikes from "../pages/allBikes/AllBikes";
 import Contact from "../pages/Contact/Contact";
 import AboutUs from "../pages/About/About";
+import BlogPage from "../pages/Blog/Blog";
+import BlogDetails from "../pages/Blog/BlogDetils";
 
 
 
@@ -37,6 +39,14 @@ const Router = createBrowserRouter([
             {
                 path : "about",
                 element : <AboutUs/>
+            },
+            {
+                path : "blog",
+                element : <BlogPage/>
+            },
+            {
+                path : "blog/:id",
+                element : <BlogDetails/>
             },
             {
                 path : "/register",
