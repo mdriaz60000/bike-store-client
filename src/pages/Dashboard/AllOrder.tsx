@@ -8,7 +8,6 @@ import {
   TableHeader,
   TableRow,
 } from "../../components/ui/table";
-import { RxUpdate } from "react-icons/rx";
 import { MdDeleteForever } from "react-icons/md";
 import { useDeleteOrderMutation, useGetOrderQuery } from "../../redux/features/AdminApi/orderApi";
 import { toast } from "sonner";

@@ -2,11 +2,10 @@ import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader } from "../../components/ui/card";
 import { Bike } from "../../types";
 import { Button } from "../../components/ui/button";
-import {  Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { useDeleteProductMutation } from "@/redux/features/AdminApi/ProductApi";
 import { useAppSelector } from "@/redux/hooks";
 import { useCurrentUser } from "@/redux/features/auth/authSlice";
-
 import EditProduct from "./EditProduct";
 
 interface User {
@@ -49,8 +48,7 @@ const AllBikesCard = ({ bike }: { bike: Bike }) => {
 
       <CardContent className="py-6 space-y-3">
         {user?.role === "admin" && (
-       <EditProduct handleDelete={handleDelete} ></EditProduct>
-
+          <EditProduct handleDelete={handleDelete} bikeId={bike._id} />
         )}
 
         <div className="flex justify-between items-start">

@@ -2,7 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Container from "../shared/Containeer/Containeer";
 import { Button } from "../ui/button";
-import { Menu, X } from "lucide-react"; // Icon from lucide-react
+import { Menu, X } from "lucide-react";
+import { Logout } from "@/redux/features/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -15,6 +17,12 @@ const navLinks = [
 
 const Navbar2 = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useAppDispatch();
+  const { user } = useAppSelector((state) => state.auth);
+
+  const handleLogout = () => {
+     dispatch(Logout());
+  };
 
   return (
     <div className="bg-primary sticky top-0 z-10">
@@ -46,16 +54,30 @@ const Navbar2 = () => {
           </nav>
 
           {/* Right: Auth Buttons */}
-          <nav className="flex gap-3 text-primary">
-            <Link to="/register">
-            <Button className="bg-secondary text-primary hover:bg-primary-foreground hover:text-primary">SignUp</Button>
-            </Link>
-            <Link to="/login">
-            <Button className="bg-secondary text-primary hover:bg-primary-foreground hover:text-primary ">SignIn</Button>
-            </Link>
-            
-          </nav>
-        </div>
+           {user ? (
+            <nav>
+              <Button
+                onClick={handleLogout}
+                className="bg-secondary text-primary hover:bg-primary-foreground hover:text-primary"
+              >
+                Logout
+              </Button>
+            </nav>
+          ) : (
+            <nav className="flex gap-3 text-primary">
+              <Link to="/register">
+                <Button className="bg-secondary text-primary hover:bg-primary-foreground hover:text-primary">
+                  SignUp
+                </Button>
+              </Link>
+              <Link to="/login">
+                <Button className="bg-secondary text-primary hover:bg-primary-foreground hover:text-primary">
+                  SignIn
+                </Button>
+              </Link>
+            </nav>
+          )} 
+        </div> 
 
         {/* Mobile Dropdown Menu */}
         {isOpen && (

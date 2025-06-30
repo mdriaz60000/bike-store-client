@@ -5,6 +5,7 @@ import Container from "../shared/Containeer/Containeer";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import { Star } from "lucide-react";
 import { Button } from "../ui/button";
+import { Bike } from "@/types";
 
 const SearchResultsPage = () => {
   const [params] = useSearchParams();
@@ -18,7 +19,7 @@ const SearchResultsPage = () => {
         <p>Loading...</p>
       ) : data?.data?.length ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {data.data.map((item: item) => (
+          {data.data.map((item: Bike) => (
             <div key={item._id} className="border rounded p-2">
      <Card className="group w-full max-w-sm mx-auto overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100">
       <CardHeader className="p-0 relative">

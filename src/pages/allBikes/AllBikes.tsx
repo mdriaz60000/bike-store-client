@@ -3,7 +3,7 @@ import Container from "@/components/shared/Containeer/Containeer";
 import { useGetProductQuery } from "../../redux/features/AdminApi/ProductApi";
 import { Bike } from "../../types";
 import AllBikesCard from "./AllBikesCard";
-import { Button } from "@/components/ui/button";
+
 
 
 const AllBikes = () => {
@@ -24,15 +24,11 @@ const AllBikes = () => {
 
         <div className=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3">
             {data?.data?.map((bike : Bike)  => (
-                <AllBikesCard key={(bike.id)} bike={bike} />
+                <AllBikesCard key={(bike._id)} bike={bike} />
             ))}
         </div>
 
-        <div>
-            <Button>
-                see More
-            </Button>
-        </div>
+  
 
     </Container>
 

@@ -32,15 +32,15 @@ const Router = createBrowserRouter([
                 element : <App/>
             },
             {
-                path : "allBikes",
+                path : "/allBikes",
                 element : <AllBikes/>
             },
             {
-                path : "contact",
+                path : "/contact",
                 element : <Contact/>
             },
             {
-                path : "about",
+                path : "/about",
                 element : <AboutUs/>
             },
             {
@@ -48,7 +48,7 @@ const Router = createBrowserRouter([
                 element : <OfferCard/>
             },
             {
-                path : "blog",
+                path : "/blog",
                 element : <BlogPage/>
             },
             {

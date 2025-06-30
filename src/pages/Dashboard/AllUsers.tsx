@@ -1,6 +1,5 @@
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "../../components/ui/table";
 import { useDeleteUserMutation, useGetAllUserQuery } from "../../redux/features/AdminApi/userApi";
-import { RxUpdate } from "react-icons/rx";
 import { MdDeleteForever } from "react-icons/md";
 import Swal from 'sweetalert2'
 import { IUser } from "../../types";
