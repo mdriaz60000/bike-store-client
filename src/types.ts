@@ -10,6 +10,23 @@ export type Bike = {
         "id": number,
         "_id": string,
         "user": string,
-      "userEmail": string
+      "userEmail": string,
+      "rating"?: number,
+      "offer": number
 
 }
+
+ export type IUser = {
+  _id: string; 
+  name: string;
+  email: string;
+  role: string;
+}
+
+export type Imessage = {
+  UserName: string;
+  email: string;
+  message: string;
+  isDeleted?: boolean;
+  _id: string ;
+};

@@ -34,7 +34,7 @@ const AboutUs = () => {
   return (
     <Container>
       {/* Hero Section */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-primary text-white">
+      <section className=" mt-5 relative py-20 px-4 sm:px-6 lg:px-8 bg-secondary text-primary">
         <div className=" text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Story</h1>
           <p className="text-xl max-w-3xl mx-auto">

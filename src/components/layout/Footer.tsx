@@ -8,7 +8,7 @@ import Container from "../shared/Containeer/Containeer";
 
 export function Footer() {
   return (
-    <footer className="bg-white border-t border-border py-12 mt-16">
+    <footer className="bg-secondary border-t border-border py-12 mt-16">
       <Container>
         {/* Grid for Footer Sections */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">

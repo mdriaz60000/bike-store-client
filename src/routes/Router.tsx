@@ -15,6 +15,9 @@ import Contact from "../pages/Contact/Contact";
 import AboutUs from "../pages/About/About";
 import BlogPage from "../pages/Blog/Blog";
 import BlogDetails from "../pages/Blog/BlogDetils";
+import OfferCard from "../pages/Offers/OfferCard";
+import SearchResultsPage from "@/components/layout/SearchResultsPage";
+import Message from "@/pages/Dashboard/Admin/Message";
 
 
 
@@ -41,8 +44,16 @@ const Router = createBrowserRouter([
                 element : <AboutUs/>
             },
             {
+                path : "/offer",
+                element : <OfferCard/>
+            },
+            {
                 path : "blog",
                 element : <BlogPage/>
+            },
+            {
+                path : "/search",
+                element : <SearchResultsPage/>
             },
             {
                 path : "blog/:id",
@@ -58,7 +69,7 @@ const Router = createBrowserRouter([
             },
             {
                 path : "/details/:id",
-                element : <ProtectedRoute> <BikeDetails/></ProtectedRoute> ,
+                element :  <BikeDetails/>,
                 
             },
             {
@@ -67,7 +78,7 @@ const Router = createBrowserRouter([
                 children : [
                     {
                         path : "/dashboard/create-bike",
-                        element : <CreateBike />
+                        element : <ProtectedRoute><CreateBike /></ProtectedRoute> 
                     },
                     {
                         path : "/dashboard/allUsers",
@@ -76,6 +87,10 @@ const Router = createBrowserRouter([
                     {
                         path : "/dashboard/allOrder",
                         element: <Order></Order>
+                    },
+                    {
+                        path : "/dashboard/message",
+                        element: <Message/>
                     }
                 ]
             },

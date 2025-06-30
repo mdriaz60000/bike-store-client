@@ -46,7 +46,7 @@ const Reviews = () => {
         {[...Array(5)].map((_, i) => (
           <Star 
             key={i}
-            className={`h-5 w-5 ${i < rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"}`}
+            className={`h-5 w-5 ${i < rating ? "fill-primary text-primary" : "text-secondary"}`}
           />
         ))}
       </div>
@@ -58,7 +58,7 @@ const Reviews = () => {
     <section className="py-12 ">
       <div className="">
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Customer Reviews</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-3">Customer Reviews</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Hear what our customers say about their experience
           </p>

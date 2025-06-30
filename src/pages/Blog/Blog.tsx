@@ -25,8 +25,8 @@ const BlogPage = () => {
 
       {/* Hero Section */}
       <div className="text-center m-12">
-        <h1 className="text-4xl font-bold text-gray-800 mb-2">Our Latest Blogs</h1>
-        <p className="text-gray-500 text-lg">
+        <h1 className="text-4xl font-bold text-primary mb-2">Our Latest Blogs</h1>
+        <p className="text-gray-600 text-lg">
           Stay updated with the latest tips, reviews, and news from the motorbike world.
         </p>
       </div>

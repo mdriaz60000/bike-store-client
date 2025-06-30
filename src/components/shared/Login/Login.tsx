@@ -11,6 +11,7 @@ import { LoginSchema } from "./LoginValidationSchema";
 import { useLoginMutation } from "../../../redux/features/auth/authApi";
 import { useAppDispatch } from "../../../redux/hooks";
 import { setUser } from "../../../redux/features/auth/authSlice";
+import Container from "../Containeer/Containeer";
 
 
 
@@ -42,7 +43,8 @@ const LoginForm = () => {
   }; 
 
   return (
-  <div className="   w-screen flex justify-center ">
+    <Container>
+  <div className=" p-8  w-screen flex justify-center ">
       <div className="border-2 border-gray-300 rounded-xl flex-grow max-w-md w-full p-5">
       <div className="flex items-center space-x-4 text-primary  ">
         <Bike />
@@ -97,6 +99,8 @@ const LoginForm = () => {
     </div>
 
   </div>
+    </Container>
+
   );
 };
 

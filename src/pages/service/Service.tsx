@@ -41,7 +41,7 @@ const Service = () => {
         <Container>      
              <section className="py-12  ">
             <div className="max-w-7xl mx-auto text-center">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Our Services</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-primary mb-3">Our Services</h2>
                 <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8 md:mb-12">
                     We provide the best quality services to ensure your complete satisfaction
                 </p>

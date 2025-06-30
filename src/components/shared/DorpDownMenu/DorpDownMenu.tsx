@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../../ui/dropdown-menu";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { Logout, useCurrentUser } from "../../../redux/features/auth/authSlice";
+import { LayoutDashboardIcon } from "lucide-react";
 
 
 interface TUser {
@@ -23,11 +23,10 @@ const DorpDownMenu = () => {
   <>
 
         <DropdownMenu>
-        <DropdownMenuTrigger>
-          <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
+        <DropdownMenuTrigger >
+
+          <LayoutDashboardIcon></LayoutDashboardIcon>
+          
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuItem>

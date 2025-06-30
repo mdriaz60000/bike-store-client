@@ -2,9 +2,9 @@
 import axios from "axios";
 
 const axiosHost = axios.create({
-    baseURL:'bike.json',
-   // withCredentials:true,
-   //  
+    baseURL:'http://localhost:5000/api/v1',
+   withCredentials:true,
+     
 })
     
 const useAxiosHost = () => {

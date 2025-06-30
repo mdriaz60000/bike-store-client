@@ -1,24 +1,23 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Card, CardContent, CardFooter, CardHeader } from "../../components/ui/card";
+import { Card, CardContent, CardFooter } from "../../components/ui/card";
 import { Button } from "../../components/ui/button";
 import { Bike } from "../../types";
 import { useAppSelector } from "../../redux/hooks";
 import { useCurrentUser } from "../../redux/features/auth/authSlice";
 import Swal from "sweetalert2";
 import { useAddOderMutation } from "../../redux/features/AdminApi/orderApi";
-
+import { Star, Wrench, Truck, CreditCard } from "lucide-react"; // service icons
 
 interface User {
   email: string;
-  name?: string
+  name?: string;
 }
 
 const BikeDetailsCard = ({ bike }: { bike: Bike }) => {
   const user = useAppSelector(useCurrentUser) as User | undefined;
   const [addOrder] = useAddOderMutation();
- 
-  const handleAddProduct = async () => {
 
+  const handleAddProduct = async () => {
     const orderData = {
       userName: user?.name,
       price: bike.price,
@@ -37,7 +36,7 @@ const BikeDetailsCard = ({ bike }: { bike: Bike }) => {
         icon: "success",
         confirmButtonText: "OK",
       });
-    } catch (error  ) {
+    } catch (error) {
       Swal.fire({
         title: "Error!",
         text: "Failed to place the order.",
@@ -48,42 +47,94 @@ const BikeDetailsCard = ({ bike }: { bike: Bike }) => {
   };
 
   return (
-    <Card className="w-full max-w-sm mx-auto overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100">
-      <CardHeader className="p-0 relative">
-        <img
-          src={bike.img}
-          alt={bike.brand}
-          width={400}
-          height={300}
-          className="w-full h-48 object-cover hover:scale-105 transition-transform duration-500"
-        />
-        {bike.category && (
-          <span className="absolute top-2 right-2 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
-            {bike.category}
-          </span>
-        )}
-      </CardHeader>
-
-      <CardContent className="p-6 space-y-3">
-        <div className="flex justify-between items-start">
-          <div>
-            <h3 className="text-lg font-bold text-gray-900">{bike.brand}</h3>
-            <h4 className="text-md text-gray-600">Model: {bike.productName}</h4>
-          </div>
-          <span className="text-xl font-bold text-primary">${bike.price}</span>
+    <Card className="rounded-2xl overflow-hidden border border-gray-200">
+      <div className="grid md:grid-cols-2 gap-6">
+        {/* Bike Image */}
+        <div className="w-full h-full border border-primary">
+          <img
+            src={bike.img || "https://via.placeholder.com/400x300?text=No+Image"}
+            alt={bike.productName || "Bike Image"}
+            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+          />
         </div>
 
-        <p className="text-gray-500 text-sm line-clamp-2">{bike.description}</p>
-      </CardContent>
+        {/* Bike Info */}
+        <div className="flex flex-col justify-between">
+          <CardContent className="p-6 space-y-4">
+            {/* Brand / Price / Model */}
+            <div className="flex justify-between items-start">
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900">{bike.brand}</h3>
+                <h4 className="text-lg text-gray-600 mt-1">
+                  Model: {bike.productName}
+                </h4>
+              </div>
+              <span className="text-2xl font-bold text-primary">${bike.price}</span>
+            </div>
 
-      <CardFooter className="p-4 bg-gray-50">
-        <Button
-          className="w-full bg-primary hover:bg-primary-dark transition-colors duration-300"
-          onClick={handleAddProduct}
-        >
-          Add Product
-        </Button>
-      </CardFooter>
+            {/* Description */}
+            <p className="text-gray-700 text-sm leading-relaxed">
+              {bike.description || "No description provided."}
+            </p>
+            <p className="text-gray-700 text-sm leading-relaxed">
+              Category: {bike.category || "N/A"}
+            </p>
+
+            {/* Rating */}
+            <div className="flex items-center gap-1 text-primary text-sm">
+              {Array.from({ length: 5 }, (_, i) => (
+                <Star
+                  key={i}
+                  className={`w-4 h-4 ${
+                    bike.rating && bike.rating >= i + 1
+                      ? "fill-primary stroke-primary"
+                      : bike.rating && bike.rating >= i + 0.5
+                      ? "fill-primary stroke-primary"
+                      : "stroke-primary"
+                  }`}
+                />
+              ))}
+              <span className="text-gray-500 ml-2 text-xs">
+                {bike.rating || "0.0"}
+              </span>
+            </div>
+
+            {/* Services Included */}
+            <div className="mt-6">
+              <h4 className="text-md font-semibold mb-2 text-gray-700">
+                Services Included:
+              </h4>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-600">
+                <li className="flex items-center gap-2">
+                  <Wrench className="w-4 h-4 text-primary" /> 3 Free Servicing
+                </li>
+                <li className="flex items-center gap-2">
+                  <CreditCard className="w-4 h-4 text-primary" /> EMI Available
+                </li>
+                <li className="flex items-center gap-2">
+                  <Truck className="w-4 h-4 text-primary" /> Free Home Delivery
+                </li>
+              </ul>
+            </div>
+          </CardContent>
+
+          {/* Actions */}
+          <CardFooter className="flex justify-between gap-4  p-6 pt-0">
+            <Button
+              className="w-full bg-primary hover:bg-primary-dark transition-all duration-300"
+              onClick={handleAddProduct}
+            >
+              Buy Now
+            </Button>
+            <Button
+              className="w-full bg-primary hover:bg-primary-dark transition-all duration-300"
+              onClick={handleAddProduct}
+            >
+              Add to Cart
+            </Button>
+          </CardFooter>
+        </div>
+      </div>
     </Card>
   );
 };

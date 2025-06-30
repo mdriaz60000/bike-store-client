@@ -3,7 +3,8 @@ import { useDeleteUserMutation, useGetAllUserQuery } from "../../redux/features/
 import { RxUpdate } from "react-icons/rx";
 import { MdDeleteForever } from "react-icons/md";
 import Swal from 'sweetalert2'
-import { tUser } from "../../type/user";
+import { IUser } from "../../types";
+
 
 
 
@@ -15,7 +16,7 @@ const AllUsers = () => {
   if (isLoading) return <div>Loading...</div>;
   
 
-  const filteredUsers = data?.data?.filter((user: tUser) => user.role === "user") || [];
+  const filteredUsers = data?.data?.filter((user: IUser) => user.role === "user") || [];
 
   const handleSoftDelete = (userId: string) => {
     console.log(userId)
@@ -58,22 +59,17 @@ const AllUsers = () => {
           <TableRow>
             <TableHead className="w-[100px]">Name</TableHead>
             <TableHead>Role</TableHead>
-            <TableHead>Email</TableHead>
-            <TableHead>Update</TableHead>
+            <TableHead>Email</TableHead>          
             <TableHead>Delete</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {filteredUsers.map((user: tUser) => (
+          {filteredUsers.map((user: IUser) => (
             <TableRow key={user._id}>
               <TableCell className="font-medium">{user.name}</TableCell>
               <TableCell>{user.role}</TableCell>
               <TableCell>{user.email}</TableCell>
-              <TableCell>
-                <button className="text-blue-500 hover:text-blue-700">
-                  <RxUpdate />
-                </button>
-              </TableCell>
+
               <TableCell>
                 <button 
                   onClick={() => handleSoftDelete(user._id)}

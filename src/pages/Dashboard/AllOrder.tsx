@@ -12,20 +12,21 @@ import { RxUpdate } from "react-icons/rx";
 import { MdDeleteForever } from "react-icons/md";
 import { useDeleteOrderMutation, useGetOrderQuery } from "../../redux/features/AdminApi/orderApi";
 import { toast } from "sonner";
+import { Skeleton } from "../../components/ui/skeleton";
 
-interface tOrder {
+type tOrder = {
   productName: string;
   orderEmail: string;
   price: string;
   _id: string;
+
 }
 
 const Order = () => {
-  const { data, isLoading, error } = useGetOrderQuery(undefined) as { data?: tOrder[] };
+  const { data , isLoading } = useGetOrderQuery(undefined)  ;
   const [deleteOrder] = useDeleteOrderMutation();
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading orders</div>;
+  if (isLoading) return <Skeleton className="h-[20px] w-[100px] rounded-full" />;
 
   const handleDelete = async (id: string) => {
     try {
@@ -47,7 +48,6 @@ const Order = () => {
             <TableHead className="w-[100px]">Order Name</TableHead>
             <TableHead>Price</TableHead>
             <TableHead>User</TableHead>
-            <TableHead>Update</TableHead>
             <TableHead>Delete</TableHead>
           </TableRow>
         </TableHeader>
@@ -57,11 +57,7 @@ const Order = () => {
               <TableCell className="font-medium">{order.productName}</TableCell>
               <TableCell>{order.price}</TableCell>
               <TableCell>{order.orderEmail}</TableCell>
-              <TableCell>
-                <button className="text-blue-500 hover:text-blue-700">
-                  <RxUpdate />
-                </button>
-              </TableCell>
+
               <TableCell>
                 <button
                   onClick={() => handleDelete(order._id)}

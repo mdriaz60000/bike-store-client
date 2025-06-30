@@ -1,36 +1,35 @@
 import { Link } from "react-router-dom";
-import { Card, CardContent, CardHeader } from "../../components/ui/card";
-import { Bike } from "../../types";
+import Container from "../../components/shared/Containeer/Containeer";
+import { useGetProductQuery } from "../../redux/features/AdminApi/ProductApi";
 import { Button } from "../../components/ui/button";
-import {  Star } from "lucide-react";
-import { useDeleteProductMutation } from "@/redux/features/AdminApi/ProductApi";
-import { useAppSelector } from "@/redux/hooks";
-import { useCurrentUser } from "@/redux/features/auth/authSlice";
+import { Card, CardContent, CardHeader } from "../../components/ui/card";
+import { Star } from "lucide-react";
+import { Bike } from "../../types";
 
-import EditProduct from "./EditProduct";
+const OfferCard = () => {
+  const { data, error, isLoading } = useGetProductQuery(undefined);
 
-interface User {
-  role?: string;
-  name?: string;
-  image?: string;
-}
+  const offers = data?.data || [];
 
-const AllBikesCard = ({ bike }: { bike: Bike }) => {
-  const [deleteProduct] = useDeleteProductMutation();
-  const user: User | null = useAppSelector(useCurrentUser);
+  const ratedProducts = offers.filter((product: Bike) => product.offer);
 
-  const handleDelete = async () => {
-    if (window.confirm("Are you sure you want to delete this bike?")) {
-      try {
-        await deleteProduct(bike._id).unwrap();
-        // Optionally show toast or reload data
-      } catch (error) {
-        console.error("Delete failed:", error);
-      }
-    }
-  };
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error loading products.</p>;
 
   return (
+    <Container>
+            <div className='text-center my-6 md:my-12'>
+          <p className='text-3xl md:text-4xl font-bold text-primary mb-3'>Now Offer</p>
+          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+            Get Your Desired Product from Featured Offer!
+          </p>
+        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 ">
+        {ratedProducts.map((bike: Bike) => (
+          <div
+            key={bike._id}
+            className="p-4  rounded-lg  hover:shadow-md transition-all"
+          >
     <Card className="group w-full max-w-sm mx-auto overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100">
       <CardHeader className="p-0 relative">
         <img
@@ -42,19 +41,16 @@ const AllBikesCard = ({ bike }: { bike: Bike }) => {
         />
         {bike.category && (
           <span className="absolute top-2 right-2 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            {bike.category}
+            {bike.offer}%
           </span>
         )}
       </CardHeader>
 
       <CardContent className="py-6 space-y-3">
-        {user?.role === "admin" && (
-       <EditProduct handleDelete={handleDelete} ></EditProduct>
-
-        )}
-
         <div className="flex justify-between items-start">
-          <h3 className="text-lg font-bold text-gray-900">{bike.brand}</h3>
+          <div>
+            <h3 className="text-lg font-bold text-gray-900">{bike.brand}</h3>
+          </div>
           <span className="text-xl font-bold text-primary">${bike.price}</span>
         </div>
 
@@ -71,12 +67,14 @@ const AllBikesCard = ({ bike }: { bike: Bike }) => {
               }`}
             />
           ))}
-          <span className="text-gray-500 ml-2 text-xs">{bike.rating || "0.0"}</span>
+          <span className="text-gray-500 ml-2 text-xs">
+            {bike.rating || "0.0"}
+          </span>
         </div>
 
         <p className="text-gray-500 text-sm line-clamp-2">{bike.description}</p>
 
-        <div className="pt-2">
+        <div className="bg-gray-50 pt-2">
           <Link to={`/details/${bike._id}`} className="w-full">
             <Button className="w-full bg-primary hover:bg-primary-dark opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
               View Details
@@ -85,7 +83,11 @@ const AllBikesCard = ({ bike }: { bike: Bike }) => {
         </div>
       </CardContent>
     </Card>
+          </div>
+        ))}
+      </div>
+    </Container>
   );
 };
 
-export default AllBikesCard;
+export default OfferCard;

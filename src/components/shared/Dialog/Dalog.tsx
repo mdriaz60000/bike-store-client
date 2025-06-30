@@ -14,8 +14,9 @@ import { useDeleteOrderMutation, useGetOrderQuery } from "../../../redux/feature
 import { toast } from "sonner";
 import { useAppSelector } from "../../../redux/hooks";
 import { useCurrentUser } from "../../../redux/features/auth/authSlice";
-import { tUser } from "../../../type/user";
+
 import { useEffect, useState } from "react";
+import { IUser } from "../../../types";
 
 type OrderItem = {
   _id: string;
@@ -25,14 +26,15 @@ type OrderItem = {
 };
 
 export function OrderCart() {
-  const user: tUser | null = useAppSelector(useCurrentUser);
+  const user = useAppSelector(useCurrentUser) as IUser
+ 
   const { data } = useGetOrderQuery([]) as { data?: OrderItem[] };
   const [deleteOrder] = useDeleteOrderMutation();
   const [userOrders, setUserOrders] = useState<OrderItem[]>([]);
 
   useEffect(() => {
     if (data && user?.email) {
-      const filteredOrders = data.filter((item) => item.orderEmail === user.email);
+      const filteredOrders = data.filter((item) => item.orderEmail ===user?.email);
       setUserOrders(filteredOrders);
     }
   }, [data, user]);
@@ -52,9 +54,9 @@ export function OrderCart() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">
+        
           <ShoppingCart className="w-5 h-5" />
-        </Button>
+       
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

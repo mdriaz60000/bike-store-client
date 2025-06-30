@@ -1,35 +1,10 @@
 import { Link } from "react-router-dom";
-import { Card, CardContent, CardHeader } from "../../components/ui/card";
 import { Bike } from "../../types";
 import { Button } from "../../components/ui/button";
-import {  Star } from "lucide-react";
-import { useDeleteProductMutation } from "@/redux/features/AdminApi/ProductApi";
-import { useAppSelector } from "@/redux/hooks";
-import { useCurrentUser } from "@/redux/features/auth/authSlice";
+import { Card, CardContent, CardHeader } from "../../components/ui/card";
+import { Star } from "lucide-react";
 
-import EditProduct from "./EditProduct";
-
-interface User {
-  role?: string;
-  name?: string;
-  image?: string;
-}
-
-const AllBikesCard = ({ bike }: { bike: Bike }) => {
-  const [deleteProduct] = useDeleteProductMutation();
-  const user: User | null = useAppSelector(useCurrentUser);
-
-  const handleDelete = async () => {
-    if (window.confirm("Are you sure you want to delete this bike?")) {
-      try {
-        await deleteProduct(bike._id).unwrap();
-        // Optionally show toast or reload data
-      } catch (error) {
-        console.error("Delete failed:", error);
-      }
-    }
-  };
-
+const BikeCard = ({ bike }: { bike: Bike }) => {
   return (
     <Card className="group w-full max-w-sm mx-auto overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100">
       <CardHeader className="p-0 relative">
@@ -48,13 +23,10 @@ const AllBikesCard = ({ bike }: { bike: Bike }) => {
       </CardHeader>
 
       <CardContent className="py-6 space-y-3">
-        {user?.role === "admin" && (
-       <EditProduct handleDelete={handleDelete} ></EditProduct>
-
-        )}
-
         <div className="flex justify-between items-start">
-          <h3 className="text-lg font-bold text-gray-900">{bike.brand}</h3>
+          <div>
+            <h3 className="text-lg font-bold text-gray-900">{bike.brand}</h3>
+          </div>
           <span className="text-xl font-bold text-primary">${bike.price}</span>
         </div>
 
@@ -71,12 +43,14 @@ const AllBikesCard = ({ bike }: { bike: Bike }) => {
               }`}
             />
           ))}
-          <span className="text-gray-500 ml-2 text-xs">{bike.rating || "0.0"}</span>
+          <span className="text-gray-500 ml-2 text-xs">
+            {bike.rating || "0.0"}
+          </span>
         </div>
 
         <p className="text-gray-500 text-sm line-clamp-2">{bike.description}</p>
 
-        <div className="pt-2">
+        <div className=" pt-2">
           <Link to={`/details/${bike._id}`} className="w-full">
             <Button className="w-full bg-primary hover:bg-primary-dark opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
               View Details
@@ -88,4 +62,4 @@ const AllBikesCard = ({ bike }: { bike: Bike }) => {
   );
 };
 
-export default AllBikesCard;
+export default BikeCard;

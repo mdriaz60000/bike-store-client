@@ -6,7 +6,7 @@ import { useCurrentToken } from '../../redux/features/auth/authSlice';
 
 const ProtectedRoute = ({ children }: { children: ReactNode }) => {
   const token = useAppSelector(useCurrentToken);
-  console.log(token)
+ 
 
   if (!token) {
     return <Navigate to="/login" replace={true} />;

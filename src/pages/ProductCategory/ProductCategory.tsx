@@ -6,6 +6,7 @@ import { useGetProductQuery } from '../../redux/features/AdminApi/ProductApi';
 import MountCategory from './MountCategory';
 import { Bike } from '../../types';
 import Container from '../../components/shared/Containeer/Containeer';
+import { Skeleton } from '../../components/ui/skeleton';
 
 const ProductCategory = () => {
   const { data, error, isLoading } = useGetProductQuery(undefined);
@@ -18,7 +19,7 @@ const ProductCategory = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
   };
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Skeleton className="h-[20px] w-[100px] rounded-full" />;
   if (error) return <p>Error loading products.</p>;
 
   const mountainBikes = products?.filter((item: Bike) => item.category === "Mountain") || [];
@@ -49,7 +50,7 @@ const ProductCategory = () => {
     <Container>
       <div className="my-6 md:my-12">
         <div className='text-center'>
-          <p className='text-3xl md:text-4xl font-bold text-gray-900 mb-3'>Bike Category</p>
+          <p className='text-3xl md:text-4xl font-bold text-primary mb-3'>Bike Category</p>
           <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
             Get Your Desired Product from Featured Category!
           </p>

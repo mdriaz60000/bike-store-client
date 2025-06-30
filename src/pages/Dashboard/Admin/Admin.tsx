@@ -18,6 +18,8 @@ import {
 } from "../../../components/ui/avatar";
 import { Button } from "../../../components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "../../../components/ui//sheet";
+import Container from "../../../components/shared/Containeer/Containeer";
+import ProtectedRoute from "../../../components/layout/ProtectRoutes";
 
 interface User {
   role?: string;
@@ -33,6 +35,7 @@ const Admin = () => {
   }
 
   return (
+    <Container>
     <div className="flex min-h-screen w-full">
       {/* Desktop Sidebar */}
       <div className="hidden lg:flex flex-col w-64 border-r bg-muted/40">
@@ -40,13 +43,16 @@ const Admin = () => {
           <h1 className="text-xl font-semibold text-primary">Admin Dashboard</h1>
         </div>
         <div className="flex-1 p-4 space-y-1">
-          <Link
+          <ProtectedRoute>
+                    <Link
             to="/dashboard"
             className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted"
           >
             <LayoutDashboard className="h-4 w-4" />
             Overview
           </Link>
+          </ProtectedRoute>
+  
           <Link
             to="/dashboard/allUsers"
             className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted"
@@ -69,7 +75,7 @@ const Admin = () => {
             All Orders
           </Link>
           <Link
-            to="/dashboard/messages"
+            to="/dashboard/message"
             className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted"
           >
             <MessageSquare className="h-4 w-4" />
@@ -171,6 +177,8 @@ const Admin = () => {
         </main>
       </div>
     </div>
+    </Container>
+
   );
 };
 
