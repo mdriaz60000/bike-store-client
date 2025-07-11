@@ -54,7 +54,7 @@ const Service = () => {
                         >
                             <CardContent className="p-6">
                                 <div className="text-4xl mb-4">{service.icon}</div>
-                                <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
+                                <h3 className="text-xl font-bold text-gray-400 mb-3">{service.title}</h3>
                                 <p className="text-gray-600 mb-4">{service.description}</p>
                                 
                                 <ul className="space-y-2 text-left">

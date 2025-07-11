@@ -3,32 +3,12 @@ import { Card, CardContent, CardHeader } from "../../components/ui/card";
 import { Bike } from "../../types";
 import { Button } from "../../components/ui/button";
 import { Star } from "lucide-react";
-import { useDeleteProductMutation } from "@/redux/features/AdminApi/ProductApi";
-import { useAppSelector } from "@/redux/hooks";
-import { useCurrentUser } from "@/redux/features/auth/authSlice";
-import EditProduct from "./EditProduct";
 
-interface User {
-  role?: string;
-  name?: string;
-  image?: string;
-}
+
+
 
 const AllBikesCard = ({ bike }: { bike: Bike }) => {
-  const [deleteProduct] = useDeleteProductMutation();
-  const user: User | null = useAppSelector(useCurrentUser);
-
-  const handleDelete = async () => {
-    if (window.confirm("Are you sure you want to delete this bike?")) {
-      try {
-        await deleteProduct(bike._id).unwrap();
-        // Optionally show toast or reload data
-      } catch (error) {
-        console.error("Delete failed:", error);
-      }
-    }
-  };
-
+ 
   return (
     <Card className="group w-full max-w-sm mx-auto overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100">
       <CardHeader className="p-0 relative">
@@ -47,12 +27,9 @@ const AllBikesCard = ({ bike }: { bike: Bike }) => {
       </CardHeader>
 
       <CardContent className="py-6 space-y-3">
-        {user?.role === "admin" && (
-          <EditProduct handleDelete={handleDelete} bikeId={bike._id} />
-        )}
 
         <div className="flex justify-between items-start">
-          <h3 className="text-lg font-bold text-gray-900">{bike.brand}</h3>
+          <h3 className="text-lg font-bold text-gray-500">{bike.brand}</h3>
           <span className="text-xl font-bold text-primary">${bike.price}</span>
         </div>
 

@@ -45,7 +45,7 @@ const Admin = () => {
         <div className="flex-1 p-4 space-y-1">
           <ProtectedRoute>
                     <Link
-            to="/dashboard"
+            to="/dashboard/overview"
             className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted"
           >
             <LayoutDashboard className="h-4 w-4" />

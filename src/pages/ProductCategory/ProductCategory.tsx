@@ -12,7 +12,7 @@ const ProductCategory = () => {
   const { data, error, isLoading } = useGetProductQuery(undefined);
   const [tabIndex, setTabIndex] = useState(0);
 
-  const products = data?.data || [];
+  const products = data?.data.bikes || [];
 
   const tabVariants = {
     hidden: { opacity: 0, y: 20 },

@@ -14,6 +14,8 @@ import {
   useGetSingleProductQuery,
   useUpdateProductMutation,
 } from "@/redux/features/AdminApi/ProductApi";
+ import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 // Define the prop types
 interface EditProductProps {
@@ -33,8 +35,9 @@ interface FormData {
   description: string;
 }
 
-const EditProduct = ({ handleDelete, bikeId }:  EditProductProps) => {
+const EditProduct = ({ handleDelete, bikeId }: EditProductProps) => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<FormData>({
     _id: "",
     productName: "",
@@ -69,7 +72,9 @@ const EditProduct = ({ handleDelete, bikeId }:  EditProductProps) => {
   }, [data]);
 
   // Handle form input change
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -81,31 +86,51 @@ const EditProduct = ({ handleDelete, bikeId }:  EditProductProps) => {
   };
 
   // Submit updated data
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const res = await updateProduct({
-        id: formData._id,
-        updateData: formData,
-      }).unwrap();
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  try {
+    const res = await updateProduct({
+      id: formData._id,
+      updateData: formData,
+    }).unwrap();
 
-      console.log("Updated Product:", res);
-      setOpen(false);
-    } catch (err) {
-      console.error("Update failed:", err);
-    }
-  };
+    console.log("Updated Product:", res);
+
+    // Show success alert and then navigate after confirmation
+    Swal.fire({
+      title: "Success!",
+      text: "Product updated successfully.",
+      icon: "success",
+      confirmButtonColor: "#3085d6",
+    }).then(() => {
+      navigate(`/details/${formData._id}`);
+    });
+
+    setOpen(false);
+  } catch (err) {
+    console.error("Update failed:", err);
+
+    Swal.fire({
+      title: "Error!",
+      text: "Something went wrong while updating the product.",
+      icon: "error",
+      confirmButtonColor: "#d33",
+    });
+  }
+};
+
+
 
   return (
-    <div>
-      <div className="flex justify-between items-start text-primary">
-        <Button className="bg-red-700 hover:bg-red-600" onClick={handleDelete}>
+    <div className=" px-3 pb-3">
+      <div className="flex  gap-4 items-start text-primary">
+        <Button className="w-full bg-red-500 hover:bg-red-600 transition-all duration-300" onClick={handleDelete}>
           Delete
         </Button>
 
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
-            <Button>Edit</Button>
+            <Button className="w-full bg-primary hover:bg-primary-dark transition-all duration-300">Edit</Button>
           </DialogTrigger>
 
           <DialogContent className="sm:max-w-[600px]">
@@ -194,10 +219,11 @@ const EditProduct = ({ handleDelete, bikeId }:  EditProductProps) => {
                     onChange={handleChange}
                   />
                 </div>
-
-                <Button type="submit" className="w-full">
-                  Update Product
-                </Button>
+              
+                  <Button type="submit" className="w-full">
+                    Update Product
+                  </Button>
+                
               </form>
             )}
           </DialogContent>

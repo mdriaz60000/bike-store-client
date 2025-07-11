@@ -7,17 +7,35 @@ import { useCurrentUser } from "../../redux/features/auth/authSlice";
 import Swal from "sweetalert2";
 import { useAddOderMutation } from "../../redux/features/AdminApi/orderApi";
 import { Star, Wrench, Truck, CreditCard } from "lucide-react"; // service icons
+import EditProduct from "../allBikes/EditProduct";
+import { useDeleteProductMutation } from "@/redux/features/AdminApi/ProductApi";
+import { useNavigate } from "react-router-dom";
+
+
 
 interface User {
-  email: string;
+  role?: string;
   name?: string;
+  image?: string;
+  email?: string
 }
 
 const BikeDetailsCard = ({ bike }: { bike: Bike }) => {
   const user = useAppSelector(useCurrentUser) as User | undefined;
   const [addOrder] = useAddOderMutation();
+   const [deleteProduct] = useDeleteProductMutation();
+    const navigate = useNavigate();
 
   const handleAddProduct = async () => {
+      if (!user) {
+    Swal.fire({
+      title: "Unauthorized!",
+      text: "Please login to place an order.",
+      icon: "warning",
+      confirmButtonText: "Login",
+    });
+    return;
+  }
     const orderData = {
       userName: user?.name,
       price: bike.price,
@@ -46,6 +64,45 @@ const BikeDetailsCard = ({ bike }: { bike: Bike }) => {
     }
   };
 
+ 
+
+const handleDelete = async () => {
+  // Show confirmation dialog first
+  const result = await Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!"
+  });
+
+  // If user confirmed
+  if (result.isConfirmed) {
+    try {
+      await deleteProduct(bike._id).unwrap();
+
+      Swal.fire({
+        title: "Deleted!",
+        text: "Your bike has been deleted.",
+        icon: "success"
+      });
+
+      navigate("/")
+
+      // Optionally reload data or show toast here
+    } catch (error) {
+      console.error("Delete failed:", error);
+      Swal.fire({
+        title: "Error!",
+        text: "Something went wrong while deleting.",
+        icon: "error"
+      });
+    }
+  }
+};
+
   return (
     <Card className="rounded-2xl overflow-hidden border border-gray-200">
       <div className="grid md:grid-cols-2 gap-6">
@@ -61,10 +118,12 @@ const BikeDetailsCard = ({ bike }: { bike: Bike }) => {
         {/* Bike Info */}
         <div className="flex flex-col justify-between">
           <CardContent className="p-6 space-y-4">
+
+  
             {/* Brand / Price / Model */}
             <div className="flex justify-between items-start">
               <div>
-                <h3 className="text-2xl font-bold text-gray-900">{bike.brand}</h3>
+                <h3 className="text-2xl font-bold text-gray-500">{bike.brand}</h3>
                 <h4 className="text-lg text-gray-600 mt-1">
                   Model: {bike.productName}
                 </h4>
@@ -119,20 +178,35 @@ const BikeDetailsCard = ({ bike }: { bike: Bike }) => {
           </CardContent>
 
           {/* Actions */}
-          <CardFooter className="flex justify-between gap-4  p-6 pt-0">
-            <Button
+                            {user?.role === "admin" ? (
+                      <EditProduct handleDelete={handleDelete} bikeId={bike._id} />
+                    ): (
+                              <CardFooter className="flex justify-between gap-4  p-6 pt-0">
+
+            
+                          <Button
               className="w-full bg-primary hover:bg-primary-dark transition-all duration-300"
               onClick={handleAddProduct}
             >
+             
               Buy Now
+              
             </Button>
-            <Button
+           
+
+           
+                <Button
               className="w-full bg-primary hover:bg-primary-dark transition-all duration-300"
               onClick={handleAddProduct}
             >
               Add to Cart
             </Button>
+       
+
           </CardFooter>
+                    )}
+
+  
         </div>
       </div>
     </Card>

@@ -15,14 +15,14 @@ const BikeDetails = () => {
 
   useEffect(() => {
     if (data && id) {
-      const foundBike = data.data.find((bike: Bike) => bike._id === id);
+      const foundBike = data?.data?.bikes?.find((bike: Bike) => bike._id === id);
       setBike(foundBike || null);
     }
   }, [data, id]);
 
-  useEffect(() => {
+   useEffect(() => {
     if (bike && data?.data) {
-      let related = data.data.filter(
+      let related = data.data.bikes.filter(
         (item: Bike) => item._id !== bike._id && item.brand === bike.brand
       );
 
@@ -38,32 +38,22 @@ const BikeDetails = () => {
     }
   }, [bike, data, sortBy]);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading bike details</div>;
-  if (!bike) return <div>Bike not found</div>;
+  if (isLoading) return <div className="text-center py-10">Loading...</div>;
+  if (error) return <div className="text-center text-red-500 py-10">Error loading bike details</div>;
+  if (!bike) return <div className="text-center text-muted-foreground py-10">Bike not found</div>;
 
   return (
     <Container>
-      {/* Layout grid */}
       <div className="grid grid-cols-1 lg:grid-cols-8 gap-6 mt-6">
         {/* Sidebar */}
-        <aside className="lg:col-span-2 bg-secondary border border-primary rounded-lg p-4">
+        <aside className="lg:col-span-2 bg-secondary text-secondary-foreground border border-border rounded-lg p-4">
           <div className="mb-6">
             <h2 className="text-xl font-semibold mb-2">Bike Brands</h2>
-            <ul className="flex flex-wrap gap-2 lg:flex-col text-gray-600 text-sm">
-              {[
-                "Sony",
-                "Hero",
-                "Bajaj",
-                "Platina",
-                "Honda",
-                "TVS",
-                "Yamaha",
-                "Runner",
-              ].map((brand) => (
+            <ul className="flex flex-wrap gap-2 lg:flex-col text-sm">
+              {["Sony", "Hero", "Bajaj", "Platina", "Honda", "TVS", "Yamaha", "Runner"].map((brand) => (
                 <li
                   key={brand}
-                  className="px-3 py-1 bg-secondary rounded-md hover:bg-primary hover:text-secondary-foreground cursor-pointer transition text-center"
+                  className="px-3 py-1 bg-muted text-muted-foreground rounded-md hover:bg-primary hover:text-primary-foreground cursor-pointer transition-colors text-center"
                 >
                   {brand}
                 </li>
@@ -77,7 +67,7 @@ const BikeDetails = () => {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="w-full border text-primary px-3 py-2 rounded-md text-sm"
+              className="w-full border border-border bg-background text-foreground px-3 py-2 rounded-md text-sm"
             >
               <option value="priceLowToHigh">Price: Low to High</option>
               <option value="priceHighToLow">Price: High to Low</option>
@@ -86,13 +76,13 @@ const BikeDetails = () => {
           </div>
         </aside>
 
-        {/* Bike Details */}
+        {/* Bike Details Section */}
         <section className="lg:col-span-6 w-full">
           <BikeDetailsCard bike={bike} />
         </section>
       </div>
 
-      {/* Related Bikes */}
+      {/* Related Bikes Section */}
       {relatedBikes.length > 0 && (
         <>
           <h2 className="text-xl font-semibold mt-12 mb-4">Related Bikes</h2>

@@ -18,6 +18,7 @@ import BlogDetails from "../pages/Blog/BlogDetils";
 import OfferCard from "../pages/Offers/OfferCard";
 import SearchResultsPage from "@/components/layout/SearchResultsPage";
 import Message from "@/pages/Dashboard/Admin/Message";
+import Overview from "@/pages/Dashboard/Overview/Overview";
 
 
 
@@ -83,6 +84,10 @@ const Router = createBrowserRouter([
                     {
                         path : "/dashboard/allUsers",
                         element : <AllUsers />
+                    },
+                    {
+                        path : "/dashboard/overview",
+                        element : <Overview />
                     },
                     {
                         path : "/dashboard/allOrder",

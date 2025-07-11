@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Container from "../../components/shared/Containeer/Containeer";
 
 const Offers = () => {
@@ -13,9 +14,12 @@ const Offers = () => {
             Get up to <span className="font-bold text-yellow-300">30% OFF</span> on all motor bikes.
             Hurry up before the stock runs out!
           </p>
-          <button className="bg-white text-primary font-semibold px-6 py-2 rounded-md hover:bg-yellow-100 transition">
+          <Link to="/offer">
+                  <button className="bg-white text-primary font-semibold px-6 py-2 rounded-md hover:bg-yellow-100 transition">
             Shop Now
           </button>
+          </Link>
+  
         </div>
 
         {/* Image Section */}

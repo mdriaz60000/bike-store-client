@@ -9,7 +9,7 @@ import { Bike } from "../../types";
 const OfferCard = () => {
   const { data, error, isLoading } = useGetProductQuery(undefined);
 
-  const offers = data?.data || [];
+  const offers = data?.data?.bikes || [];
 
   const ratedProducts = offers.filter((product: Bike) => product.offer);
 
@@ -49,7 +49,7 @@ const OfferCard = () => {
       <CardContent className="py-6 space-y-3">
         <div className="flex justify-between items-start">
           <div>
-            <h3 className="text-lg font-bold text-gray-900">{bike.brand}</h3>
+            <h3 className="text-lg font-bold text-gray-500">{bike.brand}</h3>
           </div>
           <span className="text-xl font-bold text-primary">${bike.price}</span>
         </div>
@@ -74,7 +74,7 @@ const OfferCard = () => {
 
         <p className="text-gray-500 text-sm line-clamp-2">{bike.description}</p>
 
-        <div className="bg-gray-50 pt-2">
+        <div className=" ">
           <Link to={`/details/${bike._id}`} className="w-full">
             <Button className="w-full bg-primary hover:bg-primary-dark opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
               View Details

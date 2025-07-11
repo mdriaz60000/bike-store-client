@@ -81,12 +81,10 @@
 //   );
 // }
 
-     
-      //   <section className=" ">
-      //  <img src="https://live.staticflickr.com/4249/34414522754_2d64b0bfe7_b.jpg" alt="" />
-      // </section>
 
 
+
+import { Link } from "react-router-dom";
 import Container from "../../components/shared/Containeer/Containeer";
 
 const Bannar = () => {
@@ -104,9 +102,12 @@ const Bannar = () => {
                 Get up to <span className="font-bold text-yellow-300">30% OFF</span> on all motor bikes.
                 Hurry before stock ends!
               </p>
-              <button className="bg-white text-primary font-semibold px-6 py-3 rounded-md hover:bg-yellow-100 transition">
+        <div>
+              <Link to="/offer" className="bg-white text-primary font-semibold px-6 py-3 rounded-md hover:bg-yellow-100 transition">
                 Shop Now
-              </button>
+              </Link>
+        </div>
+
             </div>
 
             {/* Image Section */}
@@ -146,41 +147,3 @@ export default Bannar;
 
 
 
-// import Container from "../../components/shared/Containeer/Containeer";
-
-// const Bannar = () => {
-//   return (
-//     <Container>
-//       <div className="mt-2 grid grid-cols-8 gap-3 max-h-[70vh] ">
-//         {/* Main Banner Image */}
-//         <div className="col-span-6">
-//           <img
-//             className=""
-//             src="https://i.ibb.co/NnT6fc26/Chat-GPT-Image-Jun-27-2025-09-02-15-AM.png"
-//             alt=""
-//           />
-//         </div>
-
-//         {/* Side Images */}
-//         <div className="col-span-2 grid grid-rows-2 gap-2">
-//           <section>
-//             <img
-//               className=" "
-//               src="https://www.roadracingworld.com/wp-content/uploads/2024/09/GSX800FRQM4_QZY_right_1726115833.jpg"
-//               alt=""
-//             />
-//           </section>
-//           <section>
-//             <img
-//               className=" "
-//               src="https://s7g10.scene7.com/is/image/ktm/KTM-2025-350-XC-F-Factory-Edition?wid=1000&dpr=off"
-//               alt=""
-//             />
-//           </section>
-//         </div>
-//       </div>
-//     </Container>
-//   );
-// };
-
-// export default Bannar;

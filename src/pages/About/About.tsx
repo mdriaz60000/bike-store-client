@@ -47,7 +47,7 @@ const AboutUs = () => {
       <section className="py-16 ">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Why We Started</h2>
+            <h2 className="text-3xl font-bold text-gray-500 mb-6">Why We Started</h2>
             <p className="text-gray-600 mb-4">
               Founded in 2018, BikeHub began with a simple mission: to make quality bicycles 
               accessible to everyone without compromising on performance or durability.

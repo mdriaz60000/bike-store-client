@@ -11,7 +11,7 @@ import { LoginSchema } from "./LoginValidationSchema";
 import { useLoginMutation } from "../../../redux/features/auth/authApi";
 import { useAppDispatch } from "../../../redux/hooks";
 import { setUser } from "../../../redux/features/auth/authSlice";
-import Container from "../Containeer/Containeer";
+// import Container from "../Containeer/Containeer";
 
 
 
@@ -43,8 +43,8 @@ const LoginForm = () => {
   }; 
 
   return (
-    <Container>
-  <div className=" p-8  w-screen flex justify-center ">
+   
+  <div className=" py-8 flex justify-center ">
       <div className="border-2 border-gray-300 rounded-xl flex-grow max-w-md w-full p-5">
       <div className="flex items-center space-x-4 text-primary  ">
         <Bike />
@@ -57,6 +57,26 @@ const LoginForm = () => {
       </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
+
+           {/* Demo Login Section */}
+              <div className="my-4">
+                <p className="text-sm font-medium mb-2 text-muted-foreground">Use Demo Login</p>
+  <Button
+  type="button"
+  variant="outline"
+  className="w-full border border-primary text-primary hover:bg-primary/10"
+  onClick={() => {
+    form.setValue("email", "riaz@gmail.com");
+    form.setValue("password", "202020");
+    setTimeout(() => {
+      form.handleSubmit(onSubmit)(); // Submit form after setting values
+    }, 100);
+  }}
+>
+  Login as Admin
+</Button>
+
+              </div>
 
           <FormField
             control={form.control}
@@ -99,7 +119,7 @@ const LoginForm = () => {
     </div>
 
   </div>
-    </Container>
+ 
 
   );
 };

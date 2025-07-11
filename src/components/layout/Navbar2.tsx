@@ -21,21 +21,26 @@ const Navbar2 = () => {
   const { user } = useAppSelector((state) => state.auth);
 
   const handleLogout = () => {
-     dispatch(Logout());
+    dispatch(Logout());
   };
 
   return (
-    <div className="bg-primary sticky top-0 z-10">
+    <div className="bg-primary text-primary-foreground sticky top-0 z-10 shadow-md">
       <Container>
         <div className="flex justify-between items-center py-3">
           {/* Left: Site Name */}
-          <nav className="text-secondary hidden md:block">
-            <p>Online Ecommerce Store</p>
+          <nav className="hidden md:block">
+            <p className="text-secondary-foreground font-semibold">
+              Online Ecommerce Store
+            </p>
           </nav>
 
           {/* Mobile Menu Toggle */}
           <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-secondary">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-secondary-foreground"
+            >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -46,7 +51,7 @@ const Navbar2 = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                className="text-secondary hover:text-secondary hover:underline"
+                className="text-secondary-foreground hover:underline transition-colors"
               >
                 {link.name}
               </Link>
@@ -54,30 +59,30 @@ const Navbar2 = () => {
           </nav>
 
           {/* Right: Auth Buttons */}
-           {user ? (
+          {user ? (
             <nav>
               <Button
                 onClick={handleLogout}
-                className="bg-secondary text-primary hover:bg-primary-foreground hover:text-primary"
+                className="bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
               >
                 Logout
               </Button>
             </nav>
           ) : (
-            <nav className="flex gap-3 text-primary">
+            <nav className="flex gap-3">
               <Link to="/register">
-                <Button className="bg-secondary text-primary hover:bg-primary-foreground hover:text-primary">
+                <Button className="bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
                   SignUp
                 </Button>
               </Link>
               <Link to="/login">
-                <Button className="bg-secondary text-primary hover:bg-primary-foreground hover:text-primary">
+                <Button className="bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
                   SignIn
                 </Button>
               </Link>
             </nav>
-          )} 
-        </div> 
+          )}
+        </div>
 
         {/* Mobile Dropdown Menu */}
         {isOpen && (
@@ -88,7 +93,7 @@ const Navbar2 = () => {
                   key={link.name}
                   to={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-secondary hover:text-secondary"
+                  className="text-secondary-foreground hover:underline transition-colors"
                 >
                   {link.name}
                 </Link>

@@ -25,7 +25,7 @@ const BikeCard = ({ bike }: { bike: Bike }) => {
       <CardContent className="py-6 space-y-3">
         <div className="flex justify-between items-start">
           <div>
-            <h3 className="text-lg font-bold text-gray-900">{bike.brand}</h3>
+            <h3 className="text-lg font-bold text-gray-500">{bike.brand}</h3>
           </div>
           <span className="text-xl font-bold text-primary">${bike.price}</span>
         </div>
