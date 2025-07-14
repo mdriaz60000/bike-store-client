@@ -31,7 +31,7 @@ const LoginForm = () => {
   } = form;
 
   const onSubmit = async (data: z.infer<typeof LoginSchema>) => {
-    console.log("Form Data:", data);
+    // console.log("Form Data:", data);
     const res = await login(data).unwrap()
     
     if(res.success){

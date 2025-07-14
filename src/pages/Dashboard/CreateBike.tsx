@@ -37,7 +37,7 @@ const CreateBike = () => {
   const onSubmit = async (data : FormValues) => {
     
     try {
-      console.log(data)
+      
       const res = await productData(data).unwrap()
       console.log(res)
     } catch (error) {
@@ -47,8 +47,10 @@ const CreateBike = () => {
   };
 
   return (
-    <div className="py-10">
+    <div className="py-8">
+       <p className=" font-bold text-center pb-2">add Bike</p>
       <div className="w-[90%] mx-auto">
+       
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

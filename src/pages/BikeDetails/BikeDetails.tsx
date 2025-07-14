@@ -9,9 +9,11 @@ import Container from "../../components/shared/Containeer/Containeer";
 const BikeDetails = () => {
   const { id } = useParams<{ id: string }>();
   const { data, error, isLoading } = useGetProductQuery(undefined);
+ 
+
   const [bike, setBike] = useState<Bike | null>(null);
   const [relatedBikes, setRelatedBikes] = useState<Bike[]>([]);
-  const [sortBy, setSortBy] = useState("priceLowToHigh");
+
 
   useEffect(() => {
     if (data && id) {
@@ -22,21 +24,12 @@ const BikeDetails = () => {
 
    useEffect(() => {
     if (bike && data?.data) {
-      let related = data.data.bikes.filter(
+      const related = data.data.bikes.filter(
         (item: Bike) => item._id !== bike._id && item.brand === bike.brand
       );
-
-      if (sortBy === "priceLowToHigh") {
-        related = related.sort((a: { price: number; }, b: { price: number; }) => a.price - b.price);
-      } else if (sortBy === "priceHighToLow") {
-        related = related.sort((a: { price: number; }, b: { price: number; }) => b.price - a.price);
-      } else if (sortBy === "ratingHighToLow") {
-        related = related.sort((a: { rating: number; }, b: { rating: number; }) => b.rating - a.rating);
-      }
-
       setRelatedBikes(related);
     }
-  }, [bike, data, sortBy]);
+  }, [bike, data, ]);
 
   if (isLoading) return <div className="text-center py-10">Loading...</div>;
   if (error) return <div className="text-center text-red-500 py-10">Error loading bike details</div>;
@@ -61,19 +54,7 @@ const BikeDetails = () => {
             </ul>
           </div>
 
-          {/* Sort Dropdown */}
-          <div>
-            <h2 className="text-xl font-semibold mb-2">Sort By</h2>
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-              className="w-full border border-border bg-background text-foreground px-3 py-2 rounded-md text-sm"
-            >
-              <option value="priceLowToHigh">Price: Low to High</option>
-              <option value="priceHighToLow">Price: High to Low</option>
-              <option value="ratingHighToLow">Rating: High to Low</option>
-            </select>
-          </div>
+   
         </aside>
 
         {/* Bike Details Section */}

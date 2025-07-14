@@ -18,7 +18,7 @@ const AllUsers = () => {
   const filteredUsers = data?.data?.filter((user: IUser) => user.role === "user") || [];
 
   const handleSoftDelete = (userId: string) => {
-    console.log(userId)
+   
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -52,6 +52,9 @@ const AllUsers = () => {
 
   return (
     <div className="overflow-x-auto">
+      <div>
+        <p className=" font-bold ">All Users</p>
+      </div>
       <Table>
         <TableCaption>A list of all users</TableCaption>
         <TableHeader>

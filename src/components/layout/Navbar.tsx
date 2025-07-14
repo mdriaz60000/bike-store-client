@@ -42,10 +42,12 @@ export default function Navbar() {
     <header className="bg-secondary text-secondary-foreground shadow-md sticky  z-50">
       <Container>
         <div className="flex items-center justify-between py-2">
-          {/* Logo */}
+         
           <div className=" flex items-center gap-2  font-bold">
             <FaMotorcycle className="w-7 h-7 text-primary hidden md:inline" />
-            <span className="text-primary md:text-2xl">Bike Store</span>
+            
+            <span className="text-primary md:text-2xl">
+              <Link to="/">Bike Store</Link></span>
           </div>
 
           {/* Searchbar */}

@@ -29,7 +29,7 @@ const RegisterForm = () => {
   const onSubmit = async (values: z.infer<typeof RegisterSchema>) => {
     try {
       const res = await register(values).unwrap();
-      console.log(res?.data?.user)
+      // console.log(res?.data?.user)
       dispatch(setUser({
         user: res?.data?.user,
         token: res?.data?.accessToken

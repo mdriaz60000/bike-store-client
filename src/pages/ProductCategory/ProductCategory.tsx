@@ -2,17 +2,19 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { useGetProductQuery } from '../../redux/features/AdminApi/ProductApi';
 import MountCategory from './MountCategory';
 import { Bike } from '../../types';
 import Container from '../../components/shared/Containeer/Containeer';
 import { Skeleton } from '../../components/ui/skeleton';
+import { useGetProductQuery } from '@/redux/features/AdminApi/ProductApi';
+
 
 const ProductCategory = () => {
   const { data, error, isLoading } = useGetProductQuery(undefined);
   const [tabIndex, setTabIndex] = useState(0);
 
-  const products = data?.data.bikes || [];
+  const products = data?.data || [];
+  console.log(products)
 
   const tabVariants = {
     hidden: { opacity: 0, y: 20 },

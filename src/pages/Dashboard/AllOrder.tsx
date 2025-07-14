@@ -40,6 +40,9 @@ const Order = () => {
 
   return (
     <div className="overflow-x-auto">
+      <div>
+        <p className="md:text-2xl ">All Orders Bikes :</p>
+      </div>
       <Table>
         <TableCaption>A list of all orders</TableCaption>
         <TableHeader>

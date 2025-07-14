@@ -43,15 +43,15 @@ const productApi = baseApi.injectEndpoints({
       }),
     }),
 
- getAllProduct:  builder.query({
-  query: (params: { page?: number; limit?: number } = {}) => {
-    const { page = 1, limit = 10 } = params;
-    return {
-      url: `/products?page=${page}&limit=${limit}`,
-      method: "GET",
-    };
-  },
-}),
+//  getAllProduct:  builder.query({
+//   query: (params: { page?: number; limit?: number } = {}) => {
+//     const { page = 1, limit = 10 } = params;
+//     return {
+//       url: `/products?page=${page}&limit=${limit}`,
+//       method: "GET",
+//     };
+//   },
+// }),
 
   }),
 });
@@ -63,5 +63,5 @@ export const {
   useGetSingleProductQuery,
   useDeleteProductMutation,
   useUpdateProductMutation,
-  useGetAllProductQuery,
+  // useGetAllProductQuery,
 } = productApi;

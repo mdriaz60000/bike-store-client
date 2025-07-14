@@ -59,7 +59,7 @@ const LatestBike = () => {
         </div>
 
         <div className=" grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-3">
-          {data?.data?.bikes?.map((bike: Bike) => (
+          {data?.data?.slice(0, 8).map((bike: Bike) => (
             <BikeCard key={bike._id} bike={bike} />
           ))}
         </div>

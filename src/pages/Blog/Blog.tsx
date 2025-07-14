@@ -15,7 +15,7 @@ const BlogPage = () => {
   const [blogs, setBlogs] = useState<Blog[]>([]);
 
   useEffect(() => {
-    fetch("/blog.json") // Make sure blog.json is in the "public" folder
+    fetch("/blog.json") 
       .then((res) => res.json())
       .then((data) => setBlogs(data))
       .catch((error) => console.error("Error loading blogs:", error));

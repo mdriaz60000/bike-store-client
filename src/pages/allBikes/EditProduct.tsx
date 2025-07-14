@@ -94,10 +94,11 @@ const handleSubmit = async (e: React.FormEvent) => {
       updateData: formData,
     }).unwrap();
 
-    console.log("Updated Product:", res);
+    // console.log("Updated Product:", res);
 
     // Show success alert and then navigate after confirmation
-    Swal.fire({
+    if (res.success) {
+          Swal.fire({
       title: "Success!",
       text: "Product updated successfully.",
       icon: "success",
@@ -107,6 +108,8 @@ const handleSubmit = async (e: React.FormEvent) => {
     });
 
     setOpen(false);
+    }
+
   } catch (err) {
     console.error("Update failed:", err);
 
