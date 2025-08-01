@@ -9,22 +9,20 @@ import Container from "../../components/shared/Containeer/Containeer";
 const BikeDetails = () => {
   const { id } = useParams<{ id: string }>();
   const { data, error, isLoading } = useGetProductQuery(undefined);
- 
-
   const [bike, setBike] = useState<Bike | null>(null);
   const [relatedBikes, setRelatedBikes] = useState<Bike[]>([]);
 
 
   useEffect(() => {
     if (data && id) {
-      const foundBike = data?.data?.bikes?.find((bike: Bike) => bike._id === id);
+      const foundBike = data?.data?.find((bike: Bike) => bike._id === id);
       setBike(foundBike || null);
     }
   }, [data, id]);
 
    useEffect(() => {
     if (bike && data?.data) {
-      const related = data.data.bikes.filter(
+      const related = data.data.filter(
         (item: Bike) => item._id !== bike._id && item.brand === bike.brand
       );
       setRelatedBikes(related);
